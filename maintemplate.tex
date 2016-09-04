@@ -1,0 +1,32 @@
+\documentclass[fullscreen=true]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{enumerate,indentfirst,tikz,pgf}
+\usetikzlibrary{mindmap,trees}
+\usetikzlibrary{shadows}
+
+\usetheme{Warsaw}
+
+\usecolortheme{default}
+
+\setbeamertemplate{background canvas} [vertical
+shading][bottom=blue!20,top=blue!60]
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%\usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
+
+
+% ----------- Дополнительные спецификации ----------
+\newcounter{tasknum}
+\newcommand{\task}{\addtocounter{tasknum}{1}
+\arabic{tasknum}}
+%---------------------------------------------------
+
+\begin{document}
+
+{{content}}
+
+\end{document}
