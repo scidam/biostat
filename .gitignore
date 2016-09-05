@@ -3,3 +3,9 @@
 *.log
 *.pdf
 .settings
+*.aux
+*.nav
+*.snm
+*.toc
+Lect*/*.tex
+*.out
