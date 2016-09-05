@@ -227,5 +227,639 @@ $\emptyset$\},  и положить: $P$(<<Орел>>)=$p$, $P$(<<Решка>>)=
 $p<1$.
 \end{exampleblock}
 \end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 10 ---------------
+\begin{frame}
+\frametitle{Вероятностное пространство. Пример.}
+
+\begin{block}{Подбрасывание игральной кости}
+\begin{itemize}
+\item $\Omega = \{1,2,3,4,5,6\}$
+\item $\mathcal{F}$ -- все подмножества $\Omega$; всего: $2^6$ подмножеств.
+\item Примеры событий:
+	 $A$ = <<Выпавшее число четное>>; $B$ = <<Выпавшее число меньше 3>>;
+		  Пересечение данных событий -- элементарное событие: <<Выпало число 2>>.
+	$A$ = <<Выпавшее число четное>>; $B$ = <<Выпавшее число меньше 5>>;
+		  Пересечение данных событий: <<Выпало число 2 или 4>> -- уже не элементарное событие.
+	 $A$ = <<Выпало четное число>>; $B$ = <<Выпало нечетное число>>. Пересечение событий пусто.
+\end{itemize}
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 11 ---------------
+
+\begin{frame}
+\frametitle{Независимость и <<Независимость>>}
+
+\begin{block}{Независимость}
+Независимы те события, которые не оказывают влияния друг на друга.
+\end{block}
+
+\begin{block}{Задача \task}
+Монета подброшена дважды. Какова вероятность, что выпало два герба?
+\end{block}
+
+\begin{block}{Задача \task}
+Игральную кость подбросили дважды. Что вероятнее: сумма выпавших
+очков равна 10 или сумма выпавших очков равна 9?
+\end{block}
+
+\begin{block}{Формализация понятия <<независимость>>}
+События $A$ и $B$ называются независимыми, если $P(A\cap
+B)=P(A)P(B)$.
+\end{block}
+
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 12 ---------------
+\begin{frame}
+\frametitle{Условные вероятности}
+Пусть $\Omega$ --- прямоугольник, а $\mathcal{F}$ составляют
+подмножества $\Omega$, имеющие площадь. Положим:\\
+$$P(x\in A)=S(A)/S(\Omega), A\subset\Omega$$
+где $S(\cdot)$ --- взятие площади.
+\begin{block}{Вопрос}
+Если заведомо известно, что $x\in B$, какова вероятность того, что
+$x\in A$?
+\end{block}
+\pause
+\begin{alertblock}{Решение}
+$$P^\ast(x\in A)=\dfrac{S(A\cap B)}{S(B)}=\dfrac{S(A\cap
+B)/S(\Omega)}{S(B)/S(\Omega)}=\dfrac{P(A\cap B)}{P(B)}.
+$$
+\end{alertblock}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 13 ---------------
+\begin{frame}
+\frametitle{Формула полной вероятности}
+
+\begin{block}{Утверждение}
+Если $A$ произвольное событие представимо в виде объединения попарно
+несовместных событий $B_1,B_2,\ldots,B_n$, или
+$A\subset\mathop{\bigcup}\limits_{k=1}^n B_k$, то
+\begin{center} $P(A)=\sum\limits_{k=1}^n P(B_k)P(A|B_k).$
+\end{center}
+\end{block}
+
+\begin{block}{Формула  Т.~Байеса (1703--1762)}
+При условиях предыдущего утверждения справедливо:
+$$P(B_k|A)=\dfrac{P(A\cap
+B_k)}{P(A)}=\dfrac{P(A|B_k)P(B_k)}{\sum\limits_{k=1}^n P(A\cap
+B_k)P(B_k)}.$$
+\end{block}
+\end{frame}
 
 % -----------------------------------------
+
+% ---------------- слайд 14 ---------------
+\begin{frame}
+\frametitle{Схема Бернулли}
+
+\begin{block} {Задача \task}
+Эксперимент состоит в $n$--кратном повторении опыта с двумя
+исходами. Вероятность <<успеха>> в опыте равна $p$, вероятность
+<<неудачи>> --- $q$ ($p+q=1$). Определить, вероятность $k$ успехов
+при выполнении эксперимента.
+\end{block}
+\begin{exampleblock}{Решение}
+Рассмотрим событие, состоящее в том, что первые $k$ испытаний
+окончились <<успехом>>, а остальные $n-k$ --- <<неудачей>>.
+Вероятность такого события --- $p^k\cdot q^{n-k}$. Общее число
+подобных событий в эксперименте, отличающихся порядком <<успехов>> и
+<<неудач>> равно количеству $k$--элементных подмножеств
+$n$--элементного множества, т.~е. $C^k_n$. Следовательно, искомая
+вероятность определяется выражением: $C_n^kp^kq^{n-k}$.
+\end{exampleblock}
+\end{frame}
+
+% -----------------------------------------
+
+
+% ---------------- слайд 15 ---------------
+\begin{frame}
+\frametitle{Типовые задачи}
+\begin{block} {Задача \task}
+Осуществятся $n$ испытаний по схеме Бернулли. Чему равна
+вероятность, что произошел хотя бы один успех?
+\end{block}
+
+\begin{block}{Задача \task}
+На самолете имеются 4 одинаковых двигателя.
+Вероятность нормальной работы каждого двигателя в полете равна $p$.
+Найдите вероятность того, что в полете могут возникнуть
+неполадки в хотя бы одном двигателе.
+\end{block}
+
+\begin{block}{Задача \task}
+При высаживании непикированной рассады помидоров
+только 80\% растений приживаются. Найдите вероятность того,
+что из десяти посаженных кустов помидоров приживется не
+менее девяти.
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 16 ---------------
+
+\begin{frame}
+\frametitle{Предельные теоремы в схеме Бернулли}
+\begin{block}{Теорема С.Д.~Пуассона (1781--1840)}
+Если в схеме Бернулли $n\rightarrow\infty$, так что
+$p_nn\rightarrow\lambda=\textrm{const}$, то
+$$
+P(k,n)\rightarrow\dfrac{\lambda^k}{k!}\textrm{e}^{-\lambda}.
+$$
+\end{block}
+
+\begin{alertblock}{Задача}
+В магазин поступило 500 деталей. Производителем деталей установлена
+доля бракованной продукции 10\%. Найти вероятность, что в партии
+поступивших деталей содержится 50 бракованных.
+\end{alertblock}
+\pause
+\begin{exampleblock}{Решение}
+$P(50,500)=C_{500}^{50}(1/10)^{50}(9/10)^{450}\simeq0.0593\approx{\color{red}0.0563}$.
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 17 ---------------
+\begin{frame}
+\frametitle{Предельные теоремы в схеме Бернулли}
+\begin{block}{Теорема Муавра--Лапласа}
+Пусть в схеме Бернулли $n\rightarrow\infty$ и 
+$x_k = \dfrac{k - np}{\sqrt{npq}}$ -- ограничена по $k$ и $n$, то
+$$
+P(k,n) = \dfrac{1}{\sqrt{2\pi npq}}\textrm{e}^{-\dfrac{x_k^2}{2}}(1 + \alpha_n(k)),
+$$
+где $\left| \alpha_n(k) \right| < \dfrac{\textrm{const}}{\sqrt{n}}$.
+\end{block}
+
+\begin{block}{Следствие из локальной теоремы Муавра--Лапласа}
+Если $P(k,n)$ вероятность $k$ успехов в серии $n$ испытаний Бернулли, то:
+$$
+P(k,n)\approx\dfrac{1}{\sqrt{npq}}\varphi(x),\,\varphi(x)=\dfrac{1}{\sqrt{2\pi}}\textrm{e}^{-x^2/2},\,x=\dfrac{k-np}{\sqrt{npq}}.
+$$
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 18 ---------------
+
+\begin{frame}
+\frametitle{Решение задачи о вместительности поезда}
+\begin{exampleblock}{}
+Вероятность того, что некий житель решит поехать в
+определенный день равна $6/30$. Таким образом, каждый день осуществляется эксперимент из 2500 независимых испытаний, состоящий в том, что
+каждый житель с вероятностью $1/5$ решает ехать или не ехать ему сегодня в
+город. Если $m$ искомая вместимость поезда, а $k$ --- число жителей,
+запланировавших на сегодня поездку, то по условию задачи
+$P(k>m)\leq0.01$. Точное выражение для $P(k>m)$ очень громоздкое,
+поэтому используем интегральную предельную теорему.
+$$
+\begin{array}{c}
+\dfrac{1}{\sqrt{2\pi}}\int\limits_{\dfrac{m_1-np}{\sqrt{npq}}}^{\dfrac{m_2-np}{\sqrt{npq}}}\textrm{e}^{-x^2/2}dx\leq0.01,\, ({\color{red}\min m ?})\\
+n=2500,\, p=1/5,\, q=4/5,\, m1=m+1,\, m2=2500.
+\end{array}
+$$
+\end{exampleblock}
+\end{frame}
+
+% -----------------------------------------
+
+
+% ---------------- слайд 19 ---------------
+\begin{frame}
+\frametitle{Случайные величины и их распределения}
+\begin{columns}
+\begin{column}{4cm}
+Эксперимент $\omega_i\in\Omega$:
+\begin{tikzpicture}
+\draw [->] (0,0) -- (1,3) node[anchor=west]{$\omega_1 \,\rightarrow\, x_1=\psi(\omega_1)$}; \draw [fill=green!90](0,0) circle(1mm);
+\draw [->] (0,0) -- (1,1.5) node[anchor=west]{$\omega_2 \,\rightarrow\, x_2=\psi(\omega_2)$};
+\draw [->] (0,0) -- (1,0) node[anchor=west]{$\omega_3 \,\rightarrow\, x_3=\psi(\omega_3)$};
+\draw (1,-1) node [anchor=west] {\vdots};
+\draw [->] (0,0) -- (1,-2.5) node[anchor=west]{$\omega_n \,\rightarrow\, x_n=\psi(\omega_n)$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{6.5cm}
+\begin{exampleblock}{Определение}
+Если $P(\omega_i)=p_i$ определены, то преобразование $\psi$ совместно с $p_i$ и
+$\Omega$
+определяют дискретную случайную величину $\xi$:
+$P(\xi=x_i)=p_i$. Множество $\{(x_i,p_i)\}$ образуют закон
+распределения случайной величины $\xi$.
+\end{exampleblock}
+\begin{block}{Пример}
+Количество очков, выпавшее при подбрасывании игральной кости, ---
+дискретная случайная величина.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 20 ---------------
+
+\begin{frame}
+\frametitle{Функция распределения случайной величины}
+\begin{exampleblock}{Определение}
+Функция $F_{\xi}(x)=P(\xi<x)$, где  $x\in\mathbb{R}$, называется
+функцией распределения случайной величины $\xi$.
+\end{exampleblock}
+
+\begin{exampleblock}{Замечание}
+Случайная величина называется \textsl{распределенной непрерывно},
+если соответствующая функция распределения является \textsl{непрерывной}.
+\end{exampleblock}
+
+\begin{exampleblock}{Замечание}
+Для случайных величин, имеющих дискретное распределение, функция
+распределения терпит разрывы. Аксиомы теории вероятностей определяют
+основные свойства функции распределения.
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 21 ---------------
+
+\begin{frame}
+\frametitle{Примеры непрерывных и разрывной функций распределения}
+
+\begin{columns}
+\begin{column}{5cm}
+\begin{tikzpicture}[domain=-2:2,xscale=0.7,yscale=0.7]
+\draw[very thin,color=gray] (-2,0) grid (2,2);
+
+\draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$}; \draw[->] (0,-0.2)
+-- (0,2.2) node[above] {$F(x)$};
+
+\draw[color=red] plot (\x,{atan(\x*10)/100}) node[above] {$\,F(x) = \frac{1}{\sqrt{2\pi}}\int\limits_0^x\mathrm e^{-t^2/2}dt$};
+\end{tikzpicture}
+{\small Стандартная нормальная функция распределения.}
+\end{column}
+
+\begin{column}{5cm}
+\begin{tikzpicture}[xscale=0.7,yscale=0.7]
+\draw[very thin,color=gray] (-2,0) grid (2,2);
+
+\draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$}; \draw[->] (0,-0.2)
+-- (0,2.2) node[above] {$F(x)$};
+
+\draw [line width=1pt, color=magenta] (-3,0) -- (0,0) -- (1,1) node[above] {$\,F(x) = x$} -- (3,1);
+\end{tikzpicture}
+{\small Функция распределения случайной величины равномерно распределенной
+на интервале [0,1].}
+\end{column}
+\end{columns}
+
+\begin{block}{Разрывная функция распределения}
+\begin{tikzpicture}[xscale=0.5,yscale=0.5]
+\draw[very thin,color=gray] (0,0) grid (8,1.5);
+\draw[->] (-0.2,0) -- (8.2,0);
+\draw[->] (0,-0.2) -- (0,2.2);
+\draw[line width=1pt] (-0.2,0) -- (1,0);
+\draw[line width=1pt] (1,0.166) -- (2,0.1667);
+\draw[line width=1pt] (2,0.333) -- (3,0.333);
+\draw[line width=1pt] (3,0.5) -- (4,0.5);
+\draw[line width=1pt] (4,0.666) -- (5,0.666);
+\draw[line width=1pt] (5,0.833) -- (6,0.833);
+\draw[line width=1pt] (6,1) -- (8,1);
+\draw (15,1) node[fill=blue!40,text width=4cm,text justified]
+{\scriptsize Функция распределения случайной величины --- числа очков при подбрасывании кубика.};
+\end{tikzpicture}
+\end{block}
+
+\end{frame}
+% -----------------------------------------
+
+
+
+% ---------------- слайд 22 ---------------
+
+\begin{frame}
+\frametitle{Свойства функций распределений}
+
+\begin{exampleblock}{Утверждение}
+Если $F_{\xi}(x)$ --- функция распределения случайной
+величины $\xi$, то
+\begin{itemize}
+\item[$\blacktriangleright$] $F_{\xi}(x)$ -- неубывающая функция;
+\item[$\blacktriangleright$] $\lim\limits_{x\rightarrow -\infty}F_{\xi}(x)=F(-\infty)=0$;
+\item[$\blacktriangleright$] $\lim\limits_{x\rightarrow +\infty}F_{\xi}(x)=F(+\infty)=1$;
+%\item[$\blacktriangleright$] $\lim\limits_{x\rightarrow a-0}F_{\xi}(x)=F(a)$, т.~е. является
+%непрерывной слева;
+\item[$\blacktriangleright$] $P(a\leq\xi<b)=F_{\xi}(b)-F_{\xi}(a), a,b\in\mathbb{R}$.
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 23 ---------------
+\begin{frame}
+\frametitle{Плотность распределения случайной величины}
+
+\begin{exampleblock}{Определение}
+Плотностью распределения ($f_{\xi}(x)$) случайной величины $\xi$
+называется производная по $x$(если таковая существует) от
+функции распределения $F_{\xi}(x)$:
+$$
+f_{\xi}(x)=\dfrac{dF_{\xi}(x)}{dx}.
+$$
+\end{exampleblock}
+
+\begin{exampleblock}{Замечание}
+Плотность распределения ---  скорость
+изменения вероятности события $\{\xi<x\}$, зависящая от $x$.
+\end{exampleblock}
+
+\begin{exampleblock}{Замечание}
+Плотность распределения в точке $x$ характеризует вероятность принадлежности
+случайной величины бесконечно малому интервалу, содержащему $x$.
+\end{exampleblock}
+
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 24 ---------------
+
+\begin{frame}
+\frametitle{Примеры плотностей распределения случайных величин}
+
+\begin{columns}
+\begin{column}{5cm}
+\begin{tikzpicture}[domain=-2:2]
+\draw[very thin,color=gray] (-2,0) grid (2,2);
+
+\draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$}; \draw[->] (0,-0.2)
+-- (0,2.2) node[above] {$f(x)$};
+
+\draw[color=yellow] plot (\x,{0.3989*exp(-\x*\x/2)}) node[above] {$\,f(x) = \frac{1}{\sqrt{2\pi}} \mathrm e^{-x^2/2}$};
+\end{tikzpicture}
+Плотность стандартного нормального  распределения.
+\end{column}
+
+\begin{column}{5cm}
+\begin{tikzpicture}[domain=-2:2]
+\draw[very thin,color=gray] (-2,0) grid (2,2);
+\draw[->] (-2.2,0) -- (2.2,0) node[anchor=south] {$x$};
+\draw[->] (0,-0.2) -- (0,2.2) node[above] {$f(x)$};
+\draw[color=orange,line width=1pt] (-1,0.5) -- (1,0.5) node[above]
+{$f(x)=1/2$};
+\draw[color=orange,line width=1pt] (-2.5,0) -- (-1,0);
+\draw[color=orange,line width=1pt] (1,0) -- (2.5,0);
+\end{tikzpicture}
+Плотность случайной величины $\xi$, распределенной равномерно на интервале [-1,\,1].
+\end{column}
+\end{columns}
+\end{frame}
+
+% -----------------------------------------
+
+
+% ---------------- слайд 25 ---------------
+
+\begin{frame}
+\frametitle{Свойства плотности распределения}
+\begin{exampleblock}{Утверждение}
+Если $f_{\xi}(x)$ плотность распределения случайной величины $\xi$,
+то
+\begin{itemize}
+\item[$\blacktriangleright$]
+$F_{\xi}(x)=\int\limits_{-\infty}^xf_{\xi}(\tau)d\tau$;
+\item[$\blacktriangleright$]
+$\lim\limits_{x\rightarrow\pm\infty}f_{\xi}(x)=0$;
+\item[$\blacktriangleright$]
+$\int\limits_{-\infty}^{\infty}f_{\xi}(x)=1$;
+\item[$\blacktriangleright$]
+$P(a\leq\xi<b)=\int\limits_a^bf_{\xi}(x)dx, a,b\in\mathbb{R}$.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 26 ---------------
+\begin{frame}
+\frametitle{Математическое ожидание и дисперсия}
+\begin{columns}
+\begin{column}{6cm}
+\begin{tikzpicture}
+\draw [fill=magenta] (1,1) circle (2pt) node[above] {$m_1,r_1$};
+\draw [fill=magenta] (2,1.5) circle (4pt) node[above] {$m_2,r_2$};
+\draw [fill=magenta] (-1,-2) circle (3pt) node[anchor=west] {$m_3,r_3$};
+\draw [fill=magenta] (2,0.1) circle (1pt) node[anchor=north] {$m_{N-1},r_{N-1}$};
+\draw [fill=magenta] (3,1) circle (2pt) node[above] {$m_{N},r_N$};
+
+\draw [->] (0,0) node[anchor=east] {O}--(1,1);
+\draw [->] (0,0)--(2,1.5);
+\draw [->] (0,0)--(-1,-2);
+\draw [->] (0,0)--(2,0.1);
+\draw [->] (0,0)--(3,1);
+\end{tikzpicture}
+
+\begin{block}{}Центр масс системы точек $\{m_i\}$: $R_C$.
+$$
+(\sum\limits_i m_i) R_C=\sum\limits_i m_i r_i.
+$$
+\end{block}
+\end{column}
+\begin{column}{0.2cm}
+\end{column}
+\begin{column}{6cm}
+\begin{block}{Дискретные распределения}
+Аналог понятия центра масс в теории вероятностей ---
+математическое ожидание случайной величины (${\rm E}\xi$).
+Для дискретных распределений
+оно определяется заменой $m_i\rightarrow p_i$:
+$$
+{\rm E}\xi=\dfrac{\sum\limits_i p_i x_i}{{\color{red}(\sum p_i)=1}},
+$$
+где $\{x_i\}$ --- возможные значения случайной величины $\xi$;
+$p_i=P(\xi=x_i)$.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 27 ---------------
+\begin{frame}
+\frametitle{Математическое ожидание и дисперсия}
+\begin{block}{Непрерывные распределения}
+Математическое ожидание случайной величины $\xi$,
+имеющей плотность распределения $f_{\xi}(x)$, определяется следующим
+образом:
+$$
+\begin{array}{l}
+{\color{magenta}{\rm E}\xi=\lim\limits_{dx\rightarrow0}
+\sum\limits_iP(\xi\in dx(x_i))x_i=
+\lim\limits_{dx\rightarrow0}\sum\limits_i f_{\xi}(x_i)x_idx(x_i);}\\
+{\rm E}\xi=\int\limits_{-\infty}^{\infty}xf_{\xi}(x)dx.
+\end{array}
+$$
+\end{block}
+\begin{block}{Задача}
+Охарактеризовать <<широту>> распределения величины $\xi$
+относительно ${\rm E}\xi$.
+\end{block}
+\end{frame}
+
+% -----------------------------------------
+
+% ---------------- слайд 28 ---------------
+
+\begin{frame}
+\frametitle{Математическое ожидание и дисперсия}
+\begin{exampleblock}{Центр масс {\color{red!40}(определение)}}
+$$
+Q(q)=\sum\limits_i m_i(r_i-q)^2, \min\limits_qQ(q).
+\eqno{(*)}
+$$
+Решение (*) достигается при $q=R_C$.
+\end{exampleblock}
+
+\begin{alertblock}{Вопрос}
+Что характеризует разброс масс механической системы относительно
+$R_C$?
+\end{alertblock}
+
+
+\begin{exampleblock}<2>{Ответ}
+В качестве меры разброса массы относительно центра масс можно
+выбрать значение $Q(R_C)$, в механике называемое моментом инерции
+механической системы относительно точки (характеризуемой $R_C$).
+\end{exampleblock}
+\end{frame}
+
+% -----------------------------------------
+
+% ---------------- слайд 29 ---------------
+\begin{frame}
+\frametitle{Математическое ожидание и дисперсия}
+\begin{exampleblock}{Определение}
+Дисперсией случайной величины $\xi$ называется число
+${\rm D}\xi={\rm E}(\xi-{\rm E}\xi)^2$, или в случае дискретного распределения ---
+${\rm D}\xi=\sum\limits_ip_i(x_i-\sum\limits_jp_jx_j)^2$; в случае
+непрерывного распределения с $f_{\xi}(x)$ ---
+${\rm D}\xi=\int\limits_{-\infty}^{\infty}(x-{\rm E}\xi)^2f_{\xi}(x)dx$, ${\rm E}\xi=\int\limits_{-\infty}^{\infty}xf_{\xi}(x)dx$.
+\end{exampleblock}
+
+\begin{block}{Свойства математического ожидания}
+\begin{itemize}
+\item[$\blacktriangleright$] $\textrm{E}(\alpha\xi_1+\beta\xi_2+\gamma)=\alpha\textrm{E}\xi_1+\beta\textrm{E}\xi_2+\gamma$;
+\item[$\blacktriangleright$]
+$\textrm{E}\xi_1\xi_2=\textrm{E}\xi_1\textrm{E}\xi_2$, если $\xi_1$ и $\xi_2$ независимы;
+\item[$\blacktriangleright$] $|\textrm{E}\xi|\leq\textrm{E}|\xi|$,
+\end{itemize}
+где $\xi_1,\xi_2,\xi$ некоторые случайные величины, для которых
+определено математическое ожидание; $\alpha,\beta,\gamma$ ---
+произвольные действительные числа.
+\end{block}
+\end{frame}
+
+% -----------------------------------------
+
+
+% ---------------- слайд 30 ---------------
+\begin{frame}
+\frametitle{Математическое ожидание и дисперсия}
+\begin{block}{Свойства дисперсии}
+\begin{itemize}
+\item[$\blacktriangleright$] $\textrm{D}(\xi_1+\xi_2)=\textrm{D}\xi_1+\textrm{D}\xi_2$, если
+$\xi_1,\xi_2$ являются независимыми;
+\item[$\blacktriangleright$] $\textrm{D}\alpha=0,
+\alpha\in\mathbb{R}$; $\textrm{D}(\alpha\xi)=\alpha^2\textrm{D}\xi$;
+\end{itemize}
+\end{block}
+
+\begin{block}{Характеристики некоторых распределений}
+\begin{itemize}
+\item $\xi\in \mathbf{U}_{[0,1]}$ --- равномерное распределение на
+интервале $[0,1]$: $\rm{E}\xi=1/2$, $\rm{D}\xi=1/12$;
+\item $\xi\Subset
+f_{\xi}(x)=\dfrac{1}{\sqrt{2\pi}}\textrm{e}^{-x^2/2}$ --- нормальное
+распределение: ${\rm E}\xi=0$, ${\rm D}\xi=1$; ($\xi\in\mathcal{N}(0,1)$, $\xi$ имеет стандартное нормальное
+распределение);
+\item $\eta=\sigma\xi+a$, где $a,\sigma\in\mathbb{R};
+\xi\in\mathcal{N}(0,1)$, то $\eta$ имеет нормальное распределение: ${\rm E}\xi=a$,
+$\rm{D}\xi=\sigma^2$; $(\xi\in\mathcal{N}(a,\sigma^2))$.
+\end{itemize}
+\end{block}
+
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 31 ---------------
+\begin{frame}
+\frametitle{Доверительные интервалы нормального распределения}
+\begin{tikzpicture}[xscale=1.25,yscale=1.65]
+    \colorlet{col1}{blue!70}
+    \colorlet{col2}{blue!60}
+    \colorlet{col3}{blue!50}
+    \colorlet{col4}{blue!40}
+   \draw [help lines] (-4.25,-1.25) grid (4.25,1.5);
+   \draw [help lines,step=0.25cm] (-2.99,0) grid (2.99,0.99);
+
+ \draw[color=col4,fill=col4] plot [domain=-3:-2] (\x,{0.3989*exp(-\x*\x/2)})
+  -- (-2,0) -- (-3,0) -- cycle;
+
+\draw[color=col3,fill=col3] plot [domain=-2:-1] (\x,{0.3989*exp(-\x*\x/2)})
+  -- (-1,0) -- (-2,0) -- cycle;
+
+\draw[color=col2,fill=col2] plot [domain=-1:0] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (0,0)  -- (-1,0) -- cycle;
+
+\draw[color=col2,fill=col2] plot [domain=0:1] (\x,{0.3989*exp(-\x*\x/2)})
+    -- (1,0)  --  (0,0) -- cycle;
+
+\draw[color=col3,fill=col3] plot [domain=1:2] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (2,0)  -- (1,0) -- cycle;
+
+\draw[color=col4,fill=col4] plot [domain=2:3] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (3,0)  -- (2,0) -- cycle;
+
+%\draw[color=red] plot[domain=-4.25:4.25,samples=100]
+%            (\x,{0.3989*exp(-\x*\x/2)});
+
+ \draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
+
+    \foreach \pos/\label in {-3/$-3\sigma$,-2/$-2\sigma$,-1/$-\sigma$,
+            1/$\sigma$,2/$2\sigma$,3/$3\sigma$}
+        \draw (\pos,0) -- (\pos,-0.1) (\pos cm,-3ex) node
+            [anchor=base,inner sep=1pt]  {\label};
+
+    \draw (-0.1,1) -- (.1,1) node [right,inner sep=1pt] {$\sigma$};
+
+    \foreach \pos/\percent/\height in {1/34/0.5,2/14/0.25,3/2/0.125,4/0.1/0.1}
+    {
+      \node[text=col\pos,anchor=base,yshift=2pt,xshift=-0.625cm,
+        inner sep=1pt] at (\pos,\height) {$\percent\%$};
+      \node[text=col\pos,anchor=base,yshift=2pt,xshift=.625cm,
+        inner sep=1pt]  at (-\pos,\height) {$\percent\%$};
+    }
+
+     \draw[->] (0,-1.25) -- (0,1.5) node [above]
+     {$\displaystyle
+        \frac{1}{\sigma\sqrt{2\pi}}\exp\biggl(\frac{-x^2}{2\sigma^2}\biggr)
+     $};
+\end{tikzpicture}
+Несмещенное нормальное распределение с дисперсией $\sigma^2$.
+\end{frame}
+% -----------------------------------------
+
+
+
+
