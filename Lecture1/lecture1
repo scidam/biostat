@@ -20,6 +20,7 @@
 \end{frame}
 % -----------------------------------------
 
+
 % ---------------- слайд 3 ----------------
 \begin{frame}
 \frametitle{Важные исторические даты}
@@ -177,6 +178,46 @@ $\dfrac{\nu}{n}$ -- его частота реализации (появлени
 \end{frame}
 
 % -----------------------------------------
+
+
+% --------------- слайд 2.a ---------------
+
+\begin{frame}
+\frametitle{Теория вероятностей (ТВ) и математическая статистика (МС)}
+
+\begin{columns}
+\begin{column}{5cm}
+\begin{exampleblock}{Задача ТВ}
+Построение математических моделей случайных явлений, \textit{проявляющих
+свойство статистической устойчивости}.
+\end{exampleblock}
+\end{column}
+\begin{column}{0.5cm}
+\end{column}
+\begin{column}{5cm}
+\begin{exampleblock}{Задача МС}
+Формирование выводов на основе данных опыта и
+представлений теории вероятностей.
+%\begin{enumerate}
+%\item<2-3> Оценка параметров
+%\item<3> Проверка гипотез
+%\end{enumerate}
+\end{exampleblock}
+\end{column}
+\end{columns}
+
+\begin{block}{Задача}
+Симметричную монету подбросили 100 раз, из которых 42 раза выпала
+<<решка>> и 58 --- <<орел>>. Построены 2 модели этого явления: 1)
+P(<<орел>>)=1/2, P(<<решка>>)=1/2; 2) P(<<орел>>)=2/3,
+P(<<решка>>)=1/3. Какую модель следует выбрать?
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+
+
+
 
 % ---------------- слайд 8 ----------------
 \begin{frame}
@@ -859,6 +900,188 @@ $\rm{D}\xi=\sigma^2$; $(\xi\in\mathcal{N}(a,\sigma^2))$.
 Несмещенное нормальное распределение с дисперсией $\sigma^2$.
 \end{frame}
 % -----------------------------------------
+
+
+% ---------------- слайд 32 ---------------
+\begin{frame}
+\frametitle{Многомерное нормальное распределение}
+\begin{exampleblock}{Определение}
+Пусть $\Upsilon=(\eta_1,\ldots,\eta_n)\in\mathcal{N}(0,1)$ -- независимы в
+совокупности случайные величины; тогда $\Xi=A\Upsilon+b$, где
+$A=A_{n\times n}$, $\dim b=n$, имеет многомерное нормальное распределение.
+\end{exampleblock}
+\begin{block}{Утверждение}
+Если матрица $A$ невырождена, то $\Xi$ имеет плотность
+$f_{\Xi}(x)=\dfrac{1}{(2\pi)^{n/2}\sqrt{\det(A^TA)}}\textrm{e}^{-(x-b)^T(A^TA)^{-1}(x-b)/2}.$
+\end{block}
+\begin{columns}
+\begin{column}{5cm}
+\begin{alertblock}{Геометрическая интерпретация}
+Пример многомерного нормального распределения с диагональной
+матрицей $A$;
+\end{alertblock}
+\end{column}
+\begin{column}{5cm}
+\includegraphics[width=4cm]{normal3d}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+
+% ---------------- слайд 33 ---------------
+
+\begin{frame}
+\frametitle{Неравенство П.Л. Чебышева}
+\begin{exampleblock}{Утверждение}
+Если для случайной величины $\xi$ определена
+дисперсия, то
+$$
+P(|\xi-\textrm{E}\xi|\geq\varepsilon)\leq\dfrac{\textrm{D}\xi}{\varepsilon^2},
+$$
+выполнено для любого $\varepsilon$>0.
+\end{exampleblock}
+
+\begin{block}{Доказательство}
+{\scriptsize
+Пусть случайная величина $\xi$ непрерывно распределена и,
+кроме того, $\xi>0$. Дадим оценку вероятности
+$P(\xi\geq\varepsilon)$. Рассмотрим выражение для математического
+ожидания случайной величины $\xi$.
+$$
+\textrm{E}\xi=\int\limits_0^{\infty}xf_{\xi}(x)dx=\underbrace{\int\limits_0^{\varepsilon}xf_{\xi}(x)dx}\limits_{\geq0}+\int\limits_{\varepsilon}^{\infty}
+xf_{\xi}(x)dx\geq \int\limits_{\varepsilon}^{\infty}
+xf_{\xi}(x)dx\geq\varepsilon P(\xi\geq\varepsilon), \nonumber
+$$
+}
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 34 ---------------
+\begin{frame}
+\frametitle{Неравенство П.Л. Чебышева}
+\begin{block}{Доказательство}
+{\scriptsize
+откуда следует, что
+$$
+P(\xi\geq\varepsilon)\leq\dfrac{\textrm{E}\xi}{\varepsilon}.
+\eqno{(*)}
+$$
+
+Положим $\eta=(\xi-\textrm{E}\xi)^2$, тогда
+$\textrm{E}\eta=\textrm{D}\xi$ и неравенство Чебышева является
+следствием  доказанного неравенства (*).
+}
+\end{block}
+
+\begin{exampleblock}{Задача \task. (применение неравенства Чебышева)}
+Известно, что среди $N$ изделий некоторое число
+бракованных. Необходимо оценить долю бракованных изделий, располагая
+только выборкой $n$ изделий из всей партии. Рассмотреть два варианта
+задачи: а) когда выборка из $n$ изделий получена путем
+последовательного их извлечения с возвращением в общую совокупность;
+б) когда выборка из $n$ изделий осуществляется по схеме без возвращения.
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+
+
+% ---------------- слайд 35 ---------------
+\begin{frame}
+\frametitle{Предельные теоремы}
+\begin{block}{Интегральная теорема Муавра--Лапласа}
+
+Если $p$ вероятность успеха в серии $n$ испытаний по схеме Бернулли ($\nu_n$ -- число успехов в $n$ испытаниях), то
+$$
+P\left(\dfrac{\nu_n-np}{\sqrt{np(1-p)}}<
+x\right)\xrightarrow[{\mbox{{\small при }}\,\displaystyle
+n\rightarrow\infty}]{}\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
+$$
+\end{block}
+
+\begin{exampleblock}{Альтернативная формулировка теоремы}
+{\scriptsize
+Пусть $\{\xi_i\}, i=1,n$ одинаково распределенные независимые случайные величины, {\color{magenta} такие что
+$P(\xi_i=1)=p, P(\xi_i=0)=1-p, \forall i$}, тогда если положить
+$\zeta_n=\dfrac{-pn+\sum\limits_{i=1}^n \xi_i}{\sqrt {n {\rm D}\xi_i}}$, (${\rm D}\xi_i=p(1-p)$), то
+$
+\lim\limits_{n\rightarrow\infty}P(\zeta_n<x)=
+\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
+$
+}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 36 ---------------
+\begin{frame}
+\frametitle{Центральная предельная теорема (Ц.П.Т.)}
+
+\begin{block}{Утверждение}
+Пусть $\{\xi_i\}$ последовательность независимых одинаково
+распределенных случайных величин, причем $\textrm{E}\xi_i=a$ и
+$\textrm{D} \xi_i=\sigma^2\in(0,\infty)$. Если $\zeta_n=\dfrac{-an+\sum\limits_{i=1}^n \xi_i}{\sqrt n\sigma},$
+то
+$$
+P(\zeta_n<x)\rightarrow\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt,
+$$
+равномерно по $x$ при $n\rightarrow\infty$
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+% ---------------- слайд 37 ---------------
+\begin{frame}
+\frametitle{Применение Ц.П.Т.}
+\begin{block}{Задача \task.}
+{\scriptsize
+Дан набор измерений параметра $a$:  $a_i=a+\xi_i$,
+$i=1,n$. Погрешности измерений $\xi_i$ являются независимыми одинаково распределенными случайными величинами,
+имеющими нулевое математическое ожидание и дисперсию $\sigma$.
+В качестве оценки параметра $a$ принимается среднее арифметическое
+$\{a_i\}$: $\hat a=\dfrac{\sum\limits_i a_i}{n}$. Сколько измерений
+необходимо провести, чтобы достичь заданной точности $\varepsilon$
+с вероятностью выхода за пределы точности $\gamma$.}
+\begin{center}
+{\small\color{magenta} Решение}
+\end{center}
+\end{block}
+\begin{columns}
+\begin{column}{6cm}
+{\scriptsize
+Неравенство Чебышева\\
+$$
+P(\biggl|\dfrac{\sum\limits_i\xi_i}{n}\biggr|\geq\varepsilon)\leq\dfrac{\sigma^2}{n\varepsilon^2}\equiv\gamma,
+$$
+$n\geq\dfrac{\gamma^{-1}\sigma^2}{\varepsilon^2}$.\\ При $\sigma=1$,
+$\varepsilon=0.01$, $\gamma=0.01$:
+{\color{red} $n\geq10^6$}.
+}
+\end{column}
+\begin{column}{6cm}
+{\scriptsize Ц.П.Т.\\
+$
+P\left(\left|\dfrac{\sum\limits_i\xi_i}{n}\right|<
+\varepsilon\right)\approx\dfrac
+{2}{\sqrt{2\pi}}\int\limits_{0}^{\dfrac{\varepsilon\sqrt
+n}{\sigma}}
+e^{-t^2/2}dt\equiv 1-\gamma.
+$\\
+При тех же условиях: {\color{red}$n\geq2223$}.
+}
+\vspace{22pt}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+
+
+
+
+
 
 
 
