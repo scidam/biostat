@@ -24,9 +24,11 @@ for root, dirs, files in os.walk("."):
                     with open(os.path.join(root, ff+'.tex'), 'w') as f:
                         f.write(template.render(content=texdata.decode('utf-8')).encode('utf-8'))
                     toeval.append(os.path.join(root, ff+'.tex'))
+
                 
 for lect in toeval:
     pp, ff = os.path.split(lect)
     os.chdir(pp)
     subprocess.call(['pdflatex', ff])
     subprocess.call(['pdflatex', ff])
+    os.chdir('..')

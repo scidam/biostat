@@ -1,7 +1,8 @@
 % ---------- Титульный слайд -------------
 \title{Статистический анализ данных. Спецкурс.}
+\subtitle{Лекция 1}
 \author{Ботанический сад-институт ДВО РАН}% \\ \texttt{kisl\_di@mail.ru}}
-\date{Кислов Д.Е. \\ 05 сентября 2016 г}
+\date{Кислов Д.Е. \\ \today}
 \maketitle
 % -----------------------------------------
 
@@ -854,7 +855,7 @@ $\rm{D}\xi=\sigma^2$; $(\xi\in\mathcal{N}(a,\sigma^2))$.
    \draw [help lines] (-4.25,-1.25) grid (4.25,1.5);
    \draw [help lines,step=0.25cm] (-2.99,0) grid (2.99,0.99);
 
- \draw[color=col4,fill=col4] plot [domain=-3:-2] (\x,{0.3989*exp(-\x*\x/2)})
+\draw[color=col4,fill=col4] plot [domain=-3:-2] (\x,{0.3989*exp(-\x*\x/2)})
   -- (-2,0) -- (-3,0) -- cycle;
 
 \draw[color=col3,fill=col3] plot [domain=-2:-1] (\x,{0.3989*exp(-\x*\x/2)})
@@ -872,10 +873,7 @@ $\rm{D}\xi=\sigma^2$; $(\xi\in\mathcal{N}(a,\sigma^2))$.
 \draw[color=col4,fill=col4] plot [domain=2:3] (\x,{0.3989*exp(-\x*\x/2)})
    -- (3,0)  -- (2,0) -- cycle;
 
-%\draw[color=red] plot[domain=-4.25:4.25,samples=100]
-%            (\x,{0.3989*exp(-\x*\x/2)});
-
- \draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
+\draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
 
     \foreach \pos/\label in {-3/$-3\sigma$,-2/$-2\sigma$,-1/$-\sigma$,
             1/$\sigma$,2/$2\sigma$,3/$3\sigma$}

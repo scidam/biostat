@@ -1,0 +1,162 @@
+% ---------- Титульный слайд -------------
+\title{Статистический анализ данных. Спецкурс.}
+\subtitle{Лекция 2}
+\author{Ботанический сад-институт ДВО РАН}% \\ \texttt{kisl\_di@mail.ru}}
+\date{Кислов Д.Е. \\ \today}
+\maketitle
+% -----------------------------------------
+
+% --------------- слайд 2 -----------------
+\begin{frame}
+\frametitle{Принципы статистического вывода}
+\only<1-3>{
+\begin{alertblock}{Положение \No 1}
+Набор однородных по смыслу измерений (значений) $x_1$, $x_2$,\ldots,$x_n$ некоторого параметра
+отождествляется с набором случайных величин, имеющих одинаковое распределение. Если $F_{\xi}(x)$ --
+функция этого распределения, то полагается, что $x_i\Subset F_{\xi}(x),\,\forall
+i$.
+\end{alertblock}
+}
+\only<2>{
+\begin{exampleblock}{Следствие 1}
+Любая характеристика выборки, функция $G$ от значений $x_1$,
+$x_2$,\ldots,$x_n$, является случайной величиной, распределение
+которой определяется видом функций $F_{\xi}(x)$ и $G$.
+\end{exampleblock}}
+
+\only<3-4>{
+\begin{exampleblock}{Следствие 2}
+Если функция распределения для случайной величины
+$G=G(x_1,x_2,\ldots,x_n)$ будет найдена, то можно будет строить
+суждения относительно широты гипотетического рассеяния
+совокупности значений $\{G\}$, как если бы $G$ вычислялось вновь и
+вновь по новым выборочным значениям $x_1$,
+$x_2$,\ldots,$x_n$.
+\end{exampleblock}}
+
+\only<4>{
+\begin{alertblock}{???}
+{\color{red} В общем случае (при произвольных $F$ и $G$) это крайне сложная
+задача...}
+\end{alertblock}
+}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 3 -----------------
+\begin{frame}
+\frametitle{Оценка параметров}
+\begin{alertblock}{Постановка задачи}
+Имеется выборка $(x_1,x_2,\ldots,x_n)$ из распределения
+$F_{\xi}(x, \theta)$. Необходимо построить оценку неизвестного
+параметра $\theta$.
+\end{alertblock}
+
+\begin{exampleblock}{Набросок решения}
+\begin{itemize}
+\item<2-> построение функции $\hat\theta_n=\hat\theta_n(x_1,\ldots,x_n)$;
+\item<3-> $\hat\theta_n$ --- случайная величина;
+\item<4-> из множества оценок $\hat\theta_n$ необходимо выбрать ту, которая обладает
+          желаемыми статистическими свойствами;
+\end{itemize}
+\end{exampleblock}
+\begin{block}{Желаемые статистические свойства}
+\begin{itemize}
+\item<5-> $P(|\hat\theta_n-\theta|>\varepsilon)\rightarrow0,\,n\rightarrow\infty$ (состоятельность);
+\item<6-> $\textrm{E}(\hat\theta_n)=\theta$ (несмещенность);
+\item<7-> $\textrm{D}(\hat\theta_n)$ --- минимальна (эффективность);
+\end{itemize}
+\end{block}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 4 -----------------
+\begin{frame}
+\frametitle{Оценка математического ожидания и дисперсии}
+\begin{block}{Задача}
+По выборке $(x_1,x_2,\ldots,x_n)$ оценить математическое
+ожидание ($a$) и дисперсию ($\sigma^2$) распределения,
+из которого сформирована выборка.
+\end{block}
+\begin{exampleblock}{Решение}
+\begin{enumerate}
+\item $\hat a_1=\dfrac{1}{n}\sum\limits_ix_i$, то $\hat a$ несмещенная
+и состоятельная;
+\item $\hat a_2=\sum\limits_i\alpha_ix_i$, где
+$\sum\limits_i\alpha_i=1$, также является состоятельной и
+несмещенной оценкой $a$;
+\item $\hat\sigma^2_1=\dfrac{1}{n}\sum\limits_i(x_i-\hat a_1)^2$ ---
+состоятельна, но смещена;
+\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)$ ---
+состоятельна и несмещена.
+\end{enumerate}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 5 -----------------
+\begin{frame}
+\frametitle{Оценки для нормально распределенных данных}
+\begin{block}{Задача}
+Дана выборка $x_1, x_2, \ldots, x_n$ из нормального распределения.
+Необходимо построить оценки математического ожидания и дисперсии распределения.
+\end{block}
+\begin{exampleblock}{Решение}
+\begin{itemize}
+\item $\hat a_1=\dfrac{1}{n}\sum\limits_ix_i$, то $\hat a$ несмещенная
+и состоятельная;
+\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)$ ---
+состоятельна и несмещена.
+\end{itemize}
+\end{exampleblock}
+
+\begin{tikzpicture}[xscale=0.7,yscale=0.6]
+    \colorlet{col1}{blue!70}
+    \colorlet{col2}{blue!60}
+    \colorlet{col3}{blue!50}
+    \colorlet{col4}{blue!40}
+   \draw [help lines] (-4.25,-1.25) grid (4.25,1.5);
+   \draw [help lines,step=0.25cm] (-2.99,0) grid (2.99,0.99);
+
+\draw[color=col4,fill=col4] plot [domain=-3:-2] (\x,{0.3989*exp(-\x*\x/2)})
+  -- (-2,0) -- (-3,0) -- cycle;
+
+\draw[color=col3,fill=col3] plot [domain=-2:-1] (\x,{0.3989*exp(-\x*\x/2)})
+  -- (-1,0) -- (-2,0) -- cycle;
+
+\draw[color=col2,fill=col2] plot [domain=-1:0] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (0,0)  -- (-1,0) -- cycle;
+
+\draw[color=col2,fill=col2] plot [domain=0:1] (\x,{0.3989*exp(-\x*\x/2)})
+    -- (1,0)  --  (0,0) -- cycle;
+
+\draw[color=col3,fill=col3] plot [domain=1:2] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (2,0)  -- (1,0) -- cycle;
+
+\draw[color=col4,fill=col4] plot [domain=2:3] (\x,{0.3989*exp(-\x*\x/2)})
+   -- (3,0)  -- (2,0) -- cycle;
+
+\draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
+
+    \foreach \pos/\label in {-3/$-3\sigma$,-2/$-2\sigma$,-1/$-\sigma$,
+            1/$\sigma$,2/$2\sigma$,3/$3\sigma$}
+        \draw (\pos,0) -- (\pos,-0.1) (\pos cm,-3ex) node
+            [anchor=base,inner sep=1pt]  {\label};
+
+    \draw (-0.1,1) -- (.1,1) node [right,inner sep=1pt] {$\sigma$};
+
+    \foreach \pos/\percent/\height in {1/34/0.5,2/14/0.25,3/2/0.125,4/0.1/0.1}
+    {
+      \node[text=col\pos,anchor=base,yshift=2pt,xshift=-0.625cm,
+        inner sep=1pt] at (\pos,\height) {$\percent\%$};
+      \node[text=col\pos,anchor=base,yshift=2pt,xshift=.625cm,
+        inner sep=1pt]  at (-\pos,\height) {$\percent\%$};
+    }
+
+     \draw[->] (0,-1.25) -- (0,1.5) node [above]
+     {$\displaystyle
+        \frac{1}{\sigma\sqrt{2\pi}}\exp\biggl(\frac{-x^2}{2\sigma^2}\biggr)
+     $};
+\end{tikzpicture}
+\end{frame}
+% -----------------------------------------
