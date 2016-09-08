@@ -416,8 +416,9 @@ $$
 
 
 % --------------- слайд 17 ----------------
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Оценка необходимого числа экспериментов/размера выборки}
+$$n =\dfrac{1}{4\varepsilon^2}\left(\Phi_0^{-1}\left(\dfrac{1+p_v}{2}\right)\right)^2$$
 \begin{exampleblock}{Реализация на R:}
 \begin{verbatim} 
 epsilon <- 0.01
