@@ -4,10 +4,15 @@
 # E-mail: kislov@easydan.com
 
 import re
-import subprocess, os
+import subprocess, os, sys
 from jinja2 import Template
 
 lecture_pat = re.compile('.*Lecture.*')
+
+try:
+    lnum = sys.argv[1]
+except IndexError:
+    lnum = ''
 
 with open('maintemplate.tex') as f:
     maintemplate = f.read()
@@ -17,7 +22,7 @@ toeval = []
 for root, dirs, files in os.walk("."):
     for ff in files:
         if lecture_pat.match(root):
-            if 'lecture' in ff:
+            if 'lecture' in ff and lnum in ff:
                 if '.' not in ff:
                     with open(os.path.join(root, ff), 'r') as f:
                         texdata = f.read()
