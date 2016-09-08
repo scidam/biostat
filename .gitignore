@@ -9,3 +9,4 @@
 *.toc
 Lect*/*.tex
 *.out
+*.vrb
