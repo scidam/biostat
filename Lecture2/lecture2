@@ -270,8 +270,168 @@ r <-  df * var(x)/qchisq(alpha/2.0)
 \end{frame}
 % -----------------------------------------
 
-
 % --------------- слайд 11 ----------------
+
+
+\begin{frame}
+\frametitle{Оценка всхожести семян}
+\begin{block}{Формулировка задачи}
+Имеется образцы семян в количестве $n$-штук. Необходимо оценить вероятность всхожести семян.
+\end{block}
+\only<2->{\begin{exampleblock}{Формулировка в терминах ТВ}
+Пусть  $p$ --вероятность того, что семя взойдет; $1-p$ -- вероятность того, что оно не взойдет. 
+В результате $n$-испытаний (проращивания семян), имеется 100 экспериментов по схеме Бернулли с неизвестной вероятностью
+<<успеха>> $p$. Эту вероятность и требуется найти.
+\end{exampleblock}
+}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 12 ----------------
+
+\begin{frame}
+\frametitle{Оценка всхожести семян}
+\begin{exampleblock}{Решение}
+\begin{itemize}
+\item<1-> Обозначим $k$  -- количество проросших семян;
+\item<2-> Можно получить оценку возможных значений $k$, решив: $\sum\limits_{i=k-s}^{i=k+s}\mathcal{C}^i_np^i(1-p)^{n-k}=1-\alpha$,
+где $\alpha$ (уровень значимости) задается, а $s$ -- находится из уравнения, но
+	\begin{itemize}
+		\item<3-> такое уравнение не всегда просто решить.
+	\end{itemize}
+\item<4-> Выход?
+\end{itemize}
+\end{exampleblock}
+\only<5->{
+\begin{itemize}
+\item<6-> Использование предельных теорем
+\item<7-> Теорема Муавра-Лапласа (интегральная).
+Если $p$ вероятность успеха в серии $n$ испытаний по схеме Бернулли ($k$ -- число успехов в $n$ испытаниях), то
+$$
+P\left(\dfrac{k-np}{\sqrt{np(1-p)}}<
+x\right)\xrightarrow[{\mbox{{\small при }}\,\displaystyle
+n\rightarrow\infty}]{}\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
+$$ 
+\end{itemize}}
+\end{frame}
+
+% -----------------------------------------
+
+
+
+
+% --------------- слайд 13 ----------------
+
+\begin{frame}
+\frametitle{Оценка всхожести семян}
+\begin{exampleblock}{Решение}
+$$
+\begin{array}{l}
+\Phi_0 = \dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt\\
+\only<2->{P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) = P\left(-\varepsilon<\dfrac{k-np}{n}<\varepsilon\right) =} \\
+\only<3->{= P\left(-\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}<\dfrac{k-np}{\sqrt{npq}}<\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right) =} \\
+\only<4->{\Phi_0\left(\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right) - \Phi_0\left(\dfrac{-\varepsilon\sqrt n}{\sqrt{pq}}\right) =
+2\cdot \Phi_0\left(\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right)-1}\\
+\only<5->{P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) \geq 2\Phi_0(2\varepsilon\sqrt n)-1}\only<7->{\color{red}{= 1-\alpha, (\alpha = 0.05)}}
+\end{array}
+$$
+\end{exampleblock}
+\only<6->{Что дальше?}
+\only<8->{Значения для $\Phi_0^{-1}$ могут вычислять любые современные программные пакеты статистического анализа, либо его
+можно определить по таблицам.}
+\end{frame}
+
+% -----------------------------------------
+
+
+% --------------- слайд 14 ----------------
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Оценка всхожести семян}
+\begin{exampleblock}{Вычисления на R}
+\begin{verbatim}
+> n<-100
+> k<-40
+> alpha <- 0.05
+> error <- 0.5*qnorm(1-alpha/2)/sqrt(n)
+> left  <- k/n - error
+> right <- k/n + error
+> left
+[1] 0.3020018
+> right
+[1] 0.4979982
+\end{verbatim}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+
+% --------------- слайд 15 ----------------
+
+\begin{frame}[fragile=singleslide]
+\frametitle{Оценка всхожести семян}
+\begin{exampleblock}{Вычисления на Python}
+\begin{verbatim}
+Python:
+>>> from scipy.stats import norm
+>>> import numpy as np 
+>>> n = 100.0
+>>> k = 40.0
+>>> alpha = 0.05
+>>> error = 0.5*norm().ppf(1-alpha/2.0)/np.sqrt(n)
+>>> left = k / n  - error
+>>> right = k / n  + error
+>>> left
+0.30200180077299732
+>>> right
+0.49799819922700272
+\end{verbatim}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 16 ----------------
+
+\begin{frame}[fragile]
+\frametitle{Оценка необходимого числа экспериментов/размера выборки}
+\begin{block}{Задача}
+Сколько нужно взять семян, чтобы оценить их всхожесть с точностью $\varepsilon=0.01$ и доверительной
+вероятностью $p_v = 0.99$.
+\end{block}
+
+\only<2-4>{
+\begin{exampleblock}{Решение}
+$$
+\begin{array}{l}
+P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) \geq 2\Phi_0(2\varepsilon\sqrt n)-1 \\
+\only<3-4>{
+2\Phi_0(2\cdot \varepsilon\sqrt n)-1 = p_v \\}
+\only<4>{n =\dfrac{1}{4\varepsilon^2}\left(\Phi_0^{-1}\left(\dfrac{1+p_v}{2}\right)\right)^2 }
+\end{array}
+$$
+\end{exampleblock}
+}
+\end{frame}
+% -----------------------------------------
+
+
+% --------------- слайд 17 ----------------
+\begin{frame}
+\frametitle{Оценка необходимого числа экспериментов/размера выборки}
+\begin{exampleblock}{Реализация на R:}
+\begin{verbatim} 
+epsilon <- 0.01
+pv <- 0.99
+n = 1/4/epsilon^2*qnorm((1+pv)/2)^2
+n
+[1] 16587.24
+\end{verbatim}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+
+% --------------- слайд 18 ----------------
 \begin{frame}
 \frametitle{Задача Бюффона (1707--1788)}
 \begin{block}{}
@@ -310,7 +470,7 @@ $P(\mbox{<<пер-ние>>})=\dfrac{1}{\pi}$.
 % -----------------------------------------
 
 
-% --------------- слайд 12 ----------------
+% --------------- слайд 19 ----------------
 \begin{frame}
 \frametitle{Продолжение решения задачи Бюффона}
 \begin{alertblock}{}

@@ -1,30 +1,27 @@
-\frametitle{Вычисление доверительных интервалов на R}
-\begin{block}{Пример вычислений}
-Пусть x = (1.62081382, -1.52406491, -0.90221069,  0.34349028,  0.61838820, -0.80183081,
- -0.55995198, -0.71210125, -0.30742587,  0.23734660,  0.63370975, -1.04691828,
-0.96165012, -0.35549459, -0.61876437,  1.36677559,  0.09070588, -0.94914323,
-0.97321593, -1.73956125) выборка из нормального распределения.
-Необходимо найти интервальные оценки дисперсии и математического ожидания.
+\frametitle{Оценка необходимого числа экспериментов/размера выборки}
+\begin{block}{Задача}
+Сколько нужно взять семян, чтобы оценить их всхожесть с точностью $\varepsilon=0.01$ и доверительной
+вероятностью $p_v = 0.99$.
 \end{block}
 
-\only<2->{
-\begin{alertblock}{код на R}
-\begin{verbatim}
-n<-length(x)
-alpha<-0.05
-error <- qt((1-alpha / 2.0), df=(n-1)) * sd(x) / sqrt(n)
-l <- mean(x) - error
-r <- mean(x) + error
-\end{verbatim}
-\end{alertblock}
+\only<2-4>{
+\begin{exampleblock}{Решение}
+$$
+\begin{array}{l}
+P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) \geq 2\Phi_0(2\varepsilon\sqrt n)-1 \\
+\only<3-4>{
+2\Phi_0(2\cdot \varepsilon\sqrt n)-1 = p_v \\}
+\only<4>{n =\dfrac{1}{4\varepsilon^2}\left(\Phi_0^{-1}\left(\dfrac{1+p_v}{2}\right)\right)^2 }
+\end{array}
+$$
+\end{exampleblock}
 }
-\only<3->{
+Реализация на R:
 \begin{verbatim}
-> l
-[1] -0.5789119
-> r
-[1] 0.3117748
-> mean(x)
-[1] -0.1335686
+epsilon<-0.01
+pv <- 0.99
+n = 1/4/epsilon^2*qnorm((1+pv)/2)^2
+n
+[1] 16587.24
 \end{verbatim}
-}
+
