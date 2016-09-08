@@ -270,3 +270,88 @@ r <-  df * var(x)/qchisq(alpha/2.0)
 \end{frame}
 % -----------------------------------------
 
+
+% --------------- слайд 11 ----------------
+\begin{frame}
+\frametitle{Задача Бюффона (1707--1788)}
+\begin{block}{}
+На плоскости расчерчивают параллельные
+линии. Показать, что если расстояние между линиями вдвое больше
+иглы, подбрасываемой над плоскостью, то отношение общего числа
+бросаний иглы к числу пресечений ею одной из линий стремится при  увеличении количества экспериментов к
+$\pi=3.14159\ldots$.
+\end{block}
+\begin{columns}
+\begin{column}{5cm}
+\begin{tikzpicture}
+\draw [help lines,color=cyan!70] (-0.9,-1.9) grid (2.9,2.9);
+\draw [->] (-1,0)--(3,0) node[anchor=north]{$\varphi$};
+\draw [->] (0,-2)--(0,3) node[anchor=east]{$c$};
+\draw[color=green,fill=green!20] (0,0)--(2,0)--(2,2)--(0,2)--cycle;
+\draw[color=red,fill=red!40] plot [domain=0:2] (\x,{2*sin(\x*90)});
+\draw (2,0) node[anchor=north]{$\pi$};
+\draw (0,2) node[anchor=east]{$l$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{5cm}
+Решение.\\
+$\{c,\varphi\}=[0,l]\times[0,\pi]$, откуда
+$P(\mbox{<<пер-ние>>})=\dfrac{S_{\sin}({\color{red!40}\bullet})}{S_{l\times\pi}}$;
+$P(\mbox{<<пер-ние>>})=\dfrac{1}{\pi}$.
+{\scriptsize
+\begin{alertblock}<2>{Вопрос}
+Сколько раз необходимо осуществлять эксперимент, чтобы достичь
+заданной точности?
+\end{alertblock}
+}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+
+% --------------- слайд 12 ----------------
+\begin{frame}
+\frametitle{Продолжение решения задачи Бюффона}
+\begin{alertblock}{}
+Сколько необходимо испытаний?
+\end{alertblock}
+\begin{columns}
+\begin{column}{5cm}
+\begin{exampleblock}{$pq=\dfrac{\pi-1}{\pi^2}$}
+$$
+\begin{array}{l}
+P(\left|\dfrac{\nu_n}{n}-p\right|<\alpha)>1-\varepsilon,\\
+\alpha=0.001,\qquad \varepsilon=0.001,\\
+\Downarrow\\
+{\color{red}\mathbf{n>232013}}
+\end{array}
+$$
+\end{exampleblock}
+\end{column}
+\begin{column}{0.2cm}
+\end{column}
+\begin{column}{5cm}
+\begin{exampleblock}{$pq\leq1/4$}
+$$
+\begin{array}{l}
+P(\left|\dfrac{\nu_n}{n}-p\right|<\alpha)>1-\varepsilon,\\
+\alpha=0.001,\qquad \varepsilon=0.001,\\
+\Downarrow\\
+{\color{red}\mathbf{n>267311}}
+\end{array}
+$$
+\end{exampleblock}
+\end{column}
+\end{columns}
+\begin{alertblock}{Вывод}
+Априорное знание оцениваемых вероятностей позволяет сэкономить
+число необходимых экспериментов для достижения установленной точности.
+\end{alertblock}
+\end{frame}
+% -----------------------------------------
+
+
+
+
+
