@@ -210,7 +210,7 @@ $\gamma_1 = \dfrac{1-p}{2}$, $p=1-\alpha$, $\alpha$ -- уровень значи
 
 
 % --------------- слайд 8 -----------------
-\begin{frame}[fragile]
+\begin{frame}[fragile=singleslide]
 \frametitle{Вычисление доверительных интервалов на R}
 \begin{block}{Пример вычислений}
 Пусть x = (1.62081382, -1.52406491, -0.90221069,  0.34349028,  0.61838820, -0.80183081,
@@ -219,9 +219,7 @@ $\gamma_1 = \dfrac{1-p}{2}$, $p=1-\alpha$, $\alpha$ -- уровень значи
 0.97321593, -1.73956125) выборка из нормального распределения. 
 Необходимо найти интервальные оценки дисперсии и математического ожидания.
 \end{block}
-
-\only<2->{
-\begin{alertblock}{код на R}
+\begin{alertblock}{код на R. Среднее}
 \begin{verbatim}
 n<-length(x)
 alpha<-0.05
@@ -230,16 +228,45 @@ l <- mean(x) - error
 r <- mean(x) + error
 \end{verbatim}
 \end{alertblock}
-}
-\only<3->{
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 9 -----------------
+\begin{frame}[fragile=singleslide]
+\frametitle{Вычисление доверительных интервалов на R}
+\begin{alertblock}{Доверительный интервал для среднего}
 \begin{verbatim}
 > l
 [1] -0.5789119
 > r
 [1] 0.3117748
-> mean(x)
+> mean(x) # point estimation of the m-expectation
 [1] -0.1335686
 \end{verbatim}
-}
+\end{alertblock}
 \end{frame}
 % -----------------------------------------
+
+
+% --------------- слайд 10 ----------------
+\begin{frame}[fragile=singleslide]
+\frametitle{Вычисление доверительных интервалов на R}
+\begin{exampleblock}{Код на R. Дисперсия.}
+\begin{verbatim}
+df <- length(x)-1
+alpha <- 0.05
+l <-  df * var(x)/qchisq(1-alpha/2.0)
+r <-  df * var(x)/qchisq(alpha/2.0)
+\end{verbatim}
+\end{exampleblock}
+\begin{verbatim}
+> r
+[1] 1.9316
+> l
+[1] 0.5236715
+> var(x) # point estimation of the variance
+[1] 0.9054645
+\end{verbatim}
+\end{frame}
+% -----------------------------------------
+
