@@ -297,7 +297,7 @@ r <-  df * var(x)/qchisq(alpha/2.0)
 \item<2-> Можно получить оценку возможных значений $k$, решив: $\sum\limits_{i=k-s}^{i=k+s}\mathcal{C}^i_np^i(1-p)^{n-k}=1-\alpha$,
 где $\alpha$ (уровень значимости) задается, а $s$ -- находится из уравнения, но
 	\begin{itemize}
-		\item<3-> такое уравнение не всегда просто решить.
+		\item<3-> такое уравнение не всегда просто решить
 	\end{itemize}
 \item<4-> Выход?
 \end{itemize}
@@ -305,7 +305,7 @@ r <-  df * var(x)/qchisq(alpha/2.0)
 \only<5->{
 \begin{itemize}
 \item<6-> Использование предельных теорем
-\item<7-> Теорема Муавра-Лапласа (интегральная).
+\item<7-> Теорема Муавра-Лапласа (интегральная)
 Если $p$ вероятность успеха в серии $n$ испытаний по схеме Бернулли ($k$ -- число успехов в $n$ испытаниях), то
 $$
 P\left(\dfrac{k-np}{\sqrt{np(1-p)}}<
@@ -442,22 +442,23 @@ n
 бросаний иглы к числу пресечений ею одной из линий стремится при  увеличении количества экспериментов к
 $\pi=3.14159\ldots$.
 \end{block}
-\begin{columns}
+\begin{columns}[T]
 \begin{column}{5cm}
 \begin{tikzpicture}
-\draw [help lines,color=cyan!70] (-0.9,-1.9) grid (2.9,2.9);
+\draw [help lines,color=cyan!70] (-0.9,-1.0) grid (2.9, 4);
 \draw [->] (-1,0)--(3,0) node[anchor=north]{$\varphi$};
 \draw [->] (0,-2)--(0,3) node[anchor=east]{$c$};
-\draw[color=green,fill=green!20] (0,0)--(2,0)--(2,2)--(0,2)--cycle;
+\draw[color=green,fill=green!20, opacity=0.3] (0,0)--(2,0)--(2,4)--(0,4)--cycle;
 \draw[color=red,fill=red!40] plot [domain=0:2] (\x,{2*sin(\x*90)});
 \draw (2,0) node[anchor=north]{$\pi$};
 \draw (0,2) node[anchor=east]{$l$};
+\draw (0,4) node[anchor=east]{$2l$};
 \end{tikzpicture}
 \end{column}
 \begin{column}{5cm}
-Решение.\\
-$\{c,\varphi\}=[0,l]\times[0,\pi]$, откуда
-$P(\mbox{<<пер-ние>>})=\dfrac{S_{\sin}({\color{red!40}\bullet})}{S_{l\times\pi}}$;
+Решение:
+$\{c,\varphi\}=[0,2l]\times[0,\pi]$, откуда
+$P(\mbox{<<пер-ние>>})=\dfrac{S_{\sin}({\color{red!40}\bullet})}{S_{2l\times\pi}}$;
 $P(\mbox{<<пер-ние>>})=\dfrac{1}{\pi}$.
 {\scriptsize
 \begin{alertblock}<2>{Вопрос}
@@ -475,7 +476,7 @@ $P(\mbox{<<пер-ние>>})=\dfrac{1}{\pi}$.
 \begin{frame}
 \frametitle{Продолжение решения задачи Бюффона}
 \begin{alertblock}{}
-Сколько необходимо испытаний?
+Сколько необходимо испытаний? (грубая оценка по неравенству Чебышева)
 \end{alertblock}
 \begin{columns}
 \begin{column}{5cm}
@@ -505,10 +506,19 @@ $$
 \end{exampleblock}
 \end{column}
 \end{columns}
+\only<1>{
 \begin{alertblock}{Вывод}
 Априорное знание оцениваемых вероятностей позволяет сэкономить
 число необходимых экспериментов для достижения установленной точности.
 \end{alertblock}
+}
+\only<2->{
+\begin{alertblock}{Упражнение}
+Получить оценку необходимого числа экспериментов используя предельные теоремы.
+\end{alertblock}
+}
+
+
 \end{frame}
 % -----------------------------------------
 
