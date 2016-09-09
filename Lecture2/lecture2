@@ -449,7 +449,7 @@ $\pi=3.14159\ldots$.
 \draw [->] (-1,0)--(3,0) node[anchor=north]{$\varphi$};
 \draw [->] (0,-2)--(0,3) node[anchor=east]{$c$};
 \draw[color=green,fill=green!20, opacity=0.3] (0,0)--(2,0)--(2,4)--(0,4)--cycle;
-\draw[color=red,fill=red!40] plot [domain=0:2] (\x,{2*sin(\x*90)});
+\draw[color=red,fill=red!40, opacity=0.6] plot [domain=0:2] (\x,{2*sin(\x*90)});
 \draw (2,0) node[anchor=north]{$\pi$};
 \draw (0,2) node[anchor=east]{$l$};
 \draw (0,4) node[anchor=east]{$2l$};
@@ -509,12 +509,12 @@ $$
 \only<1>{
 \begin{alertblock}{Вывод}
 Априорное знание оцениваемых вероятностей позволяет сэкономить
-число необходимых экспериментов для достижения установленной точности.
+число необходимых экспериментов для достижения установленной точности
 \end{alertblock}
 }
 \only<2->{
 \begin{alertblock}{Упражнение}
-Получить оценку необходимого числа экспериментов используя предельные теоремы.
+Получить оценку необходимого числа экспериментов используя предельные теоремы
 \end{alertblock}
 }
 
