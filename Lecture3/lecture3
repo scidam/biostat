@@ -138,6 +138,13 @@
 % --------------- слайд xx ----------------
 \begin{frame}
 \frametitle{Метод графов.}
+\begin{exampleblock}{Задачи}
+\begin{itemize}
+\item<1-> Определение и визуализация сложных взаимосвязей
+\item<2->
+\end{itemize}
+
+\end{exampleblock}
 
 \end{frame}
 % -----------------------------------------
