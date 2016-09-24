@@ -31,11 +31,12 @@ $H_0$ -- нулевая гипотеза, подлежащая проверке
 
 $H_1$ -- альтернативная гипотеза к $H_0$
 \end{exampleblock}
-$$
-\begin{array}{l}
-a & a  \\
-b & b  
-\end{array}
-$$
+\begin{table}{l|l|l|l}
+& $H_0$ & $H_1$ & \\ \hline
+$H_0$ & $p_a$ & $p_b$ & $p_a+p_b$ \\ \hline
+$H_1$ & $p_c$ & $p_d$ & $p_c+p_d$ \\ \hline
+&  $p_a+p_c$ & $p_b+p_d$ & $p_a+p_b+p_c+p_d$
+\end{table}
+
 \end{frame}
 % -----------------------------------------
