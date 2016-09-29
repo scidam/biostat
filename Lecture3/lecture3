@@ -31,14 +31,112 @@
 
 
 
+% --------------- слайд 3 -----------------
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\rectangle{(-2,-1.6) rectangle (4, 1.6);}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{magenta!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+\begin{frame}
+\frametitle{Меры сходства и различия}
+\begin{columns}
+\begin{column}{6cm}
+\begin{tikzpicture}
+    
+    \only<2> {
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$a$}
+                                     \secondcircle;
+    \end{scope}
+    
+    }
+    \only<3>{
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+        \node at (1, 0) {$c$};
+    \end{scope}
+    }
+    \only<4> {
+    \begin{scope}
+        \clip \secondcircle;
+        \draw[filled, even odd rule] \secondcircle node {$b$}
+                                     \firstcircle;
+    \end{scope}
+    }    
+    \draw[outline] \firstcircle node {\only<1,5->{$A$}};
+    \only<1, 5->{\node at (1,0) {\small $A\cap B$};};
+    \draw[outline] \secondcircle node {\only<1,5->{$B$}};
+    \draw \rectangle;
+    \node[anchor=south] at (current bounding box.south) {$\Omega$};
+\end{tikzpicture}
+\\~\\
+\begin{tabular}{l|l|l|l}
+&  $B$ & $\overline{B}$ & $\sum$ \\ \hline
+$A$ & $c$ & $a$ & $a+c$ \\\hline
+$\overline{A}$ & $b$ & $d$ & $b+d$ \\\hline
+$\sum$ & $b+c$ & $a+d$ & $a+b+c+d$
+\end{tabular}
+$$
+\begin{array}{l}
+a=|A-B| \\
+b=|B-A| \\
+c=|A\cap B| \\
+d=|\Omega-A\cup B|
+\end{array}
+$$
+
+
+\end{column}
+\begin{column}{4cm}
+Основные меры:
+\begin{itemize}
+\item<6-> $\dfrac{c}{a+b+c}$ {\small (Jaccard, 1901)}
+\item<7-> $\dfrac{2c}{a+b+2c}$ {\small (Чекановский, 1900; Dice, 1945; Sorensen, 1948)}
+\item<8-> $\dfrac{c}{a+b}$ {\small (Кульчинский, 1927)}
+\item<9-> $\dfrac{c}{c+a}, \dfrac{c}{c+b}$ {\small (Шимкевич, 1926; Simpson, 1943)}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 4 -----------------
+\begin{frame}
+\frametitle{Примеры вычислений}
+
+\only<1->{
+\begin{exampleblock}{Стул и тренога}
+Имеют 4 и 3 <<ноги>>  соответственно. Общее число ног $c=3$. Если A -- стул, B -- тренога, то $a=1$ и $b=0$.
+\only<2->{
+\begin{itemize}
+\item<2-> мера Жаккара $J=\dfrac{3}{1+0+3} = 0.75$
+\item<3-> мера Дайса $D=\dfrac{2\cdot 3}{1+0+2\cdot 3}=6/7\approx 0.857$  
+\item<4-> мера Кульчинского $K = \dfrac{3}{1+0}=3$
+\end{itemize}
+}
+\end{exampleblock}
+}
+\only<5>{
+\begin{alertblock}{Вычисления на R}
+\texttt{library(sets)}
+
+\texttt{set\_similarity(set(1,2,3,4),set(1,2,5),method="Jaccard")}
+
+[1] 0.4
+\end{alertblock}}
+\end{frame}
+% -----------------------------------------
 
 
 
-
-
-
-
-% --------------- слайд xx ----------------
+% --------------- слайд 5 ----------------
 
 \begin{frame}
 \frametitle{Метрики расстояния}
@@ -62,13 +160,23 @@
 % -----------------------------------------
 
 
-% --------------- слайд xx ----------------
+
+
+
+
+% --------------- слайд 6 ----------------
 
 \begin{frame}
 \frametitle{Примеры метрик}
 \begin{itemize}
-\item евклидово расстояние между точками: $\rho(x,y)=\sqrt{\sum\limits_{i=1}^3(x_i-y_i)^2}$ 
-\item максимальная разность координат (по модулю): $\rho(x,y)=\max\limits_{i}|x_i-y_i|$
+\item<1-> евклидово расстояние между точками: $\rho(x,y)=\sqrt{\sum\limits_{i=1}^n(x_i-y_i)^2}$. 
+При $n=3$ -- расстояние в трехмерном пространстве;
+ 
+\item<2-> максимальная разность координат (по модулю): $\rho(x,y)=\max\limits_{i}|x_i-y_i|$;
+\item<3-> city-block расстояние: $\sum\limits_i|x_i-y_i|$;
+\item<4-> косинус-расстояние $\dfrac{\sum\limits_i x_i y_i}{\|x\|\|y\|}$, $\|x\|=\sqrt{\sum\limits_i x_i^2}$, $\|y\|=\sqrt{\sum\limits_i y_i^2}$;
+\item<5-> взвешенные <<формы>> расстояний: $\{\omega_i\geq0\}$ -- набор весов, характеризующих значимость вклада каждой компоненты:
+          взвешенное евклидово расстояние:   $\sqrt{\sum\limits_{i=1}^n\omega_i(x_i-y_i)^2}$.
 \end{itemize}
 
 \end{frame}
@@ -76,71 +184,9 @@
 
 
 % --------------- слайд xx ----------------
-\def\firstcircle{(0,0) circle (1.5cm)}
-\def\secondcircle{(0:2cm) circle (1.5cm)}
-
-\colorlet{circle edge}{blue!50}
-\colorlet{circle area}{blue!20}
-
-\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
-    outline/.style={draw=circle edge, thick}}
-
-\setlength{\parskip}{5mm}
-
-\begin{frame}
-\frametitle{Сравнение произвольных множеств. Меры сходства.}
-
-\begin{tikzpicture}
-    \begin{scope}
-        \clip \firstcircle;
-        \fill[filled] \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle node {$A$};
-    \draw[outline] \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
-\end{tikzpicture}
 
 
-%Set A or B but not (A and B) also known a A xor B
-\begin{tikzpicture}
-    \draw[filled, even odd rule] \firstcircle node {$A$}
-                                 \secondcircle node{$B$};
-    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
-\end{tikzpicture}
-
-% Set A or B
-\begin{tikzpicture}
-    \draw[filled] \firstcircle node {$A$}
-                  \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
-\end{tikzpicture}
-
-% Set A but not B
-\begin{tikzpicture}
-    \begin{scope}
-        \clip \firstcircle;
-        \draw[filled, even odd rule] \firstcircle node {$A$}
-                                     \secondcircle;
-    \end{scope}
-    \draw[outline] \firstcircle
-                   \secondcircle node {$B$};
-    \node[anchor=south] at (current bounding box.north) {$A - B$};
-\end{tikzpicture}
-
-% Set B but not A
-\begin{tikzpicture}
-    \begin{scope}
-        \clip \secondcircle;
-        \draw[filled, even odd rule] \firstcircle
-                                     \secondcircle node {$B$};
-    \end{scope}
-    \draw[outline] \firstcircle node {$A$}
-                   \secondcircle;
-    \node[anchor=south] at (current bounding box.north) {$B - A$};
-\end{tikzpicture}
-
-\end{frame}
-% -----------------------------------------
+% -----------------------------
 
 
 % --------------- слайд xx ----------------
@@ -149,7 +195,7 @@
 \begin{exampleblock}{Задачи}
 \begin{itemize}
 \item<1-> определение и визуализация сложных зависимостей;
-\item<2-> идентификация сходных групп объектов\зависимостей;
+\item<2-> идентификация сходных групп объектов\\зависимостей;
 \end{itemize}
 
 \end{exampleblock}
