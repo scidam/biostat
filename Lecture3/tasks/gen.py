@@ -16,13 +16,6 @@ import numpy as np
 
 # ------ Symmectrical mat gen -----------
 x = np.random.rand(100,100)
-x = 0.5*(np.triu(x) + np.tril(x))
-x[30,70] = x[30,70] + 0.1
-x[4,9] = x[4,9] + 0.1
-
-x[13,64] = x[13, 64] + 1.0
-x[64,13]=x[13,64]
-print x[64,13], x[4,9], x[30,70]
 np.savetxt('ss.dat', x, fmt='%1.4e')
 # -------------------------------------
 

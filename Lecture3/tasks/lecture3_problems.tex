@@ -4,6 +4,10 @@
 \usepackage{amssymb,amsfonts,amsmath,mathtext}
 \usepackage{enumerate,indentfirst,tikz,pgf, float}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows,%
+                shapes,positioning}
+
 \topmargin=0mm
 
 \footskip=6mm
@@ -148,6 +152,39 @@ $$
 
 
 
+\task Чему равна вероятность реализации графа
+\begin{tikzpicture}[node distance   = 2 cm]
+  \useasboundingbox (-1,-1) rectangle (11,11); 
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = orange,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = orange,
+                                 double distance = 1pt}}
+  \tikzset{LabelStyle/.style =   {draw,
+                                  fill           = yellow,
+                                  text           = red}}
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 2 cm of B](D){D};
+     \node[VertexStyle,right=of D](E){E};     
+     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
+     \draw[EdgeStyle](B) to node[LabelStyle]{3} (A);
+     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
+     \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
+     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+     \draw[EdgeStyle](B) to node[LabelStyle]{8} (E);
+     \draw[EdgeStyle](A) to node[LabelStyle]{9} (E);
+  \end{tikzpicture}
+Если известно, что у графа обязательно должно быть 9 ребер. 
+
 
 \clearpage
 \newpage
@@ -262,6 +299,36 @@ $$
 
 
 \task Чему равна сумма элементов матрицы смежности для полного графа с числом вершин $n$? 
+ 
+\task Чему равна вероятность реализации графа
+\begin{tikzpicture}[node distance   = 2 cm]
+  \useasboundingbox (-1,-1) rectangle (11,11); 
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = orange,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = orange,
+                                 double distance = 1pt}}
+  \tikzset{LabelStyle/.style =   {draw,
+                                  fill           = yellow,
+                                  text           = red}}
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 2 cm of B](D){D};     
+     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
+     \draw[EdgeStyle](B) to node[LabelStyle]{3} (A);
+     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
+     \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
+     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+  \end{tikzpicture}
+Если известно, что у графа обязательно должно быть 7 ребер. 
  
  
 \end{document}
