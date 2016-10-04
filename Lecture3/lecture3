@@ -331,6 +331,9 @@ $$
 \begin{frame}
 \frametitle{Пример графа}
 % ---------- Kennigsberg bridges
+
+\begin{columns}
+\begin{column}{6cm}
 \begin{tikzpicture}[node distance   = 3 cm]
   \useasboundingbox (-1,-1) rectangle (11,11); 
   \tikzset{VertexStyle/.style = {shape          = circle,
@@ -359,6 +362,25 @@ $$
      \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
 
 \end{tikzpicture}
+\end{column}
+
+\begin{column}{6cm}
+Определения
+\begin{enumerate}
+\item<1-> Графом называется совокупность $(\mathcal{V}, \mathcal{N}, \mathcal{R})$, гк 
+\item<2-> Граф называется взвешенным, если на множестве ребер задана вещественнозначная весовая функция;
+\item<3-> Граф называется ориентированным, если указывается направления ребер, которые соединяют вершины;
+\item<4-> Граф называется полным, если все вершины друг с другом соединены ребрами;
+\item<5-> Вершина называется изолированной, если из нее не исходит ни одного ребра;
+\item<6-> Граф называется связным, если можно указать цепь ... дополнить... 
+\end{enumerate}
+\end{exampleblock}
+
+\end{column}
+\end{columns}
+
+
+
 
 
 
