@@ -13,3 +13,11 @@ x = x.astype(int)
 print x.shape
 np.savetxt('out.dat',x, fmt='%d')
 # -------------------------------------------------
+
+
+
+# gathered from vbgi collections... 
+common_species = [
+    ''
+    
+    ]
