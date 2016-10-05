@@ -267,7 +267,7 @@ $$
 
 
 
-% --------------- слайд 11 ----------------
+% --------------- слайд 9 ----------------
 \begin{frame}
 \frametitle{Метод графов}
 \begin{exampleblock}{Задачи}
@@ -284,7 +284,7 @@ $$
 
 
 
-% --------------- слайд 11 ----------------
+% --------------- слайд 10 ----------------
 \begin{frame}
 \frametitle{Пример графа (задача о Кеннигсбергских мостах)}
 % ---------- Kennigsberg bridges
@@ -292,7 +292,6 @@ $$
 \begin{columns}
 \begin{column}{6cm}
 \begin{tikzpicture}[node distance   = 1 cm]
-  %\useasboundingbox (-1,-1) rectangle (11,11); 
   \tikzset{VertexStyle/.style = {shape          = circle,
                                  ball color     = orange,
                                  text           = black,
@@ -361,13 +360,52 @@ $$
 \begin{exampleblock}{Матрица смежности}
 Если между вершинами $i$  и $j$  существует ребро, то элемент $a_{i,j}$ матрицы смежности полагается равным $1$, 
 в противном случае $0$.
-
 \end{exmapleblock}
+\begin{columns}
+\begin{column}{6cm}
 
+\end{column}
+\begin{column}{6cm}
 
+\begin{tikzpicture}[node distance   = 1 cm]
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = orange,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = orange,
+                                 double distance = 1pt}}
+  \tikzset{LabelStyle/.style =   {draw,
+                                  fill           = yellow,
+                                  text           = red}}
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 2 cm of B](D){D};     
+     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
+     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
+     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\begin{block}{Пример матрицы смежности}
+$$
+M = \left(
+\begin{array}{cccc}
+0 &1& 1& 1 \\
+1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0
+\end{array}
+\right)
+$$
+\end{block}
 \end{frame}
-
-
 % -----------------------------------------
 
 
