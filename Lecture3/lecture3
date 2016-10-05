@@ -360,10 +360,21 @@ $$
 \begin{exampleblock}{Матрица смежности}
 Если между вершинами $i$  и $j$  существует ребро, то элемент $a_{i,j}$ матрицы смежности полагается равным $1$, 
 в противном случае $0$.
-\end{exmapleblock}
+\end{exampleblock}
 \begin{columns}
 \begin{column}{6cm}
-
+\begin{block}{Пример матрицы смежности}
+$$
+M = \left(
+\begin{array}{cccc}
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0
+\end{array}
+\right)
+$$
+\end{block}
 \end{column}
 \begin{column}{6cm}
 
@@ -387,24 +398,12 @@ $$
      \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
      \tikzset{EdgeStyle/.append style = {bend left}}
      \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
-     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
-     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
-     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+     \draw[EdgeStyle](B) to node[LabelStyle]{3} (C);
+     \draw[EdgeStyle](A) to node[LabelStyle]{4} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{5} (C);
 \end{tikzpicture}
 \end{column}
 \end{columns}
-\begin{block}{Пример матрицы смежности}
-$$
-M = \left(
-\begin{array}{cccc}
-0 &1& 1& 1 \\
-1 & 0 & 1 & 0 \\
-1 & 1 & 0 & 1 \\
-1 & 0 & 1 & 0
-\end{array}
-\right)
-$$
-\end{block}
 \end{frame}
 % -----------------------------------------
 
@@ -415,13 +414,25 @@ $$
 \begin{exampleblock}{Матрица инциденций}
 Номер столбца матрицы соответствует номеру ребра. Номер строки -- номеру вершины графа.
 Единицы ставятся в случае, если ребро инцидентно двум вершинам (т.е. соединяет две вершины). 
-\end{exmapleblock}
+\end{exampleblock}
+
+
 \begin{columns}
 \begin{column}{6cm}
-
+\begin{block}{Пример матрицы инциденций}
+$$
+M = \left(
+\begin{array}{ccccc}
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 1\\
+0 & 1 & 0 & 1 & 0\\
+0 & 0 & 1 & 1 & 1
+\end{array}
+\right)
+$$
+\end{block}
 \end{column}
 \begin{column}{6cm}
-
 \begin{tikzpicture}[node distance   = 1 cm]
   \tikzset{VertexStyle/.style = {shape          = circle,
                                  ball color     = orange,
@@ -439,27 +450,23 @@ $$
      \node[VertexStyle,right=of A](B){B};
      \node[VertexStyle,right=of B](C){C};
      \node[VertexStyle,above= 2 cm of B](D){D};     
-     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \draw[EdgeStyle](B) to node[LabelStyle]{5} (D) ;
      \tikzset{EdgeStyle/.append style = {bend left}}
-     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
-     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
-     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
-     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
+     \draw[EdgeStyle](A) to node[LabelStyle]{1} (B);
+     \draw[EdgeStyle](B) to node[LabelStyle]{2} (C);
+     \draw[EdgeStyle](A) to node[LabelStyle]{3} (D);
+     \draw[EdgeStyle](D) to node[LabelStyle]{4} (C);
 \end{tikzpicture}
 \end{column}
 \end{columns}
-\begin{block}{Пример матрицы инциденций}
-$$
-M = \left(
-\begin{array}{cccc}
-1 & 0 & 1 & 0 &  \\
-1 & 1 & 0 & 0 & \\
-0 & 1 & 0 & 1 & \\
-0 & 0 & 1 & 1 &
-\end{array}
-\right)
-$$
-\end{block}
 \end{frame}
 % -----------------------------------------
 
+
+% --------------- слайд 13 ----------------
+\begin{frame}
+\frametitle{Задачи связанные с теорией графов}
+
+
+\end{frame}
+% -----------------------------------------
