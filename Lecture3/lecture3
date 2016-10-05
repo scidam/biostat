@@ -283,13 +283,13 @@ $$
 
 
 \begin{frame}
-\frametitle{Пример графа}
+\frametitle{Пример графа (задача о Кеннигсбергских мостах)}
 % ---------- Kennigsberg bridges
 
 \begin{columns}
 \begin{column}{6cm}
-\begin{tikzpicture}[node distance   = 3 cm]
-  \useasboundingbox (-1,-1) rectangle (11,11); 
+\begin{tikzpicture}[node distance   = 1 cm]
+  %\useasboundingbox (-1,-1) rectangle (11,11); 
   \tikzset{VertexStyle/.style = {shape          = circle,
                                  ball color     = orange,
                                  text           = black,
@@ -305,7 +305,7 @@ $$
      \node[VertexStyle](A){A};
      \node[VertexStyle,right=of A](B){B};
      \node[VertexStyle,right=of B](C){C};
-     \node[VertexStyle,above= 8 cm of B](D){D};     
+     \node[VertexStyle,above= 2 cm of B](D){D};     
      \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
      \tikzset{EdgeStyle/.append style = {bend left}}
      \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
@@ -314,21 +314,23 @@ $$
      \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
      \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
      \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
-
 \end{tikzpicture}
+\only<1->{Определения}
+\begin{itemize}
+\item<1-> Графом называется совокупность $(\mathcal{V}, \mathcal{N}, \mathcal{R})$,  (уточнить)
+\item<2-> Граф называется взвешенным, если на множестве ребер задана вещественнозначная весовая функция;
+\end{itemize}
 \end{column}
 
 \begin{column}{6cm}
-Определения
-\begin{enumerate}
-\item<1-> Графом называется совокупность $(\mathcal{V}, \mathcal{N}, \mathcal{R})$, гк 
-\item<2-> Граф называется взвешенным, если на множестве ребер задана вещественнозначная весовая функция;
+
+\begin{itemize}
 \item<3-> Граф называется ориентированным, если указывается направления ребер, которые соединяют вершины;
 \item<4-> Граф называется полным, если все вершины друг с другом соединены ребрами;
 \item<5-> Вершина называется изолированной, если из нее не исходит ни одного ребра;
 \item<6-> Граф называется связным, если можно указать цепь ... дополнить... 
-\end{enumerate}
-\end{exampleblock}
+\end{itemize}
+
 
 \end{column}
 \end{columns}
