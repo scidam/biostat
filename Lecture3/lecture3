@@ -286,7 +286,7 @@ $$
 
 % --------------- слайд 10 ----------------
 \begin{frame}
-\frametitle{Пример графа (задача о Кеннигсбергских мостах)}
+\frametitle{Пример графа (задача о Кёнигсбергских мостах)}
 % ---------- Kennigsberg bridges
 
 \begin{columns}
@@ -463,10 +463,56 @@ $$
 % -----------------------------------------
 
 
+
 % --------------- слайд 13 ----------------
 \begin{frame}
+\frametitle{Ориентированные графы}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance   = 1.5 cm]
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = orange,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = orange,
+                                 double distance = 1pt}}
+  \tikzset{LabelStyle/.style =   {draw,
+                                  fill           = yellow,
+                                  text           = red}}
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 2 cm of A](D){D};
+     \node[VertexStyle,above= 2 cm of C](E){E};
+          
+     \draw[EdgeStyle, ->](A) to node[LabelStyle]{5} (E);
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle,->](A) to node[LabelStyle]{1} (B);
+     \draw[EdgeStyle,->](B) to node[LabelStyle]{2} (C);
+     \draw[EdgeStyle,->](A) to node[LabelStyle]{3} (D);
+     \draw[EdgeStyle,->](C) to node[LabelStyle]{4} (E);
+\end{tikzpicture}
+\end{figure}
+\only<2->{
+\begin{exampleblock}{}
+Для представления графов в ЭВМ 
+применяются различные варианты несимметричных матриц смежности, а также матрицы инциденций;
+\end{exampleblock}}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 14 ----------------
+\begin{frame}
 \frametitle{Задачи связанные с теорией графов}
-
-
+\begin{enumerate}
+\item<1-> визуализация, структуризация данных;
+\item<2-> поиск компонент связности;
+\item<3-> поиск минимального остовного дерева (пути во взвешенном связном графе, проходящем через все вершины);
+\item<4-> классификационные задачи\only<5->{: деревья решений}\only<6->{, дендрограммы};
+\item<5-> поиск оптимальных потоков;
+\end{enumerate}
 \end{frame}
 % -----------------------------------------
