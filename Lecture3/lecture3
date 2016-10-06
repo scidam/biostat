@@ -467,6 +467,7 @@ $$
 % --------------- слайд 13 ----------------
 \begin{frame}
 \frametitle{Ориентированные графы}
+\begin{overprint}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[node distance   = 1.5 cm]
@@ -496,11 +497,12 @@ $$
      \draw[EdgeStyle,->](C) to node[LabelStyle]{4} (E);
 \end{tikzpicture}
 \end{figure}
-\only<2->{
+\onslide<2->{
 \begin{exampleblock}{}
 Для представления графов в ЭВМ 
 применяются различные варианты несимметричных матриц смежности, а также матрицы инциденций;
 \end{exampleblock}}
+\end{overprint}
 \end{frame}
 % -----------------------------------------
 
@@ -514,5 +516,24 @@ $$
 \item<4-> классификационные задачи\only<5->{: деревья решений}\only<6->{, дендрограммы};
 \item<5-> поиск оптимальных потоков;
 \end{enumerate}
+\end{frame}
+% -----------------------------------------
+
+
+% --------------- слайд 15 ----------------
+\begin{frame}
+\frametitle{Программные пакеты для работы с графами}
+\begin{exampleblock}{Python}
+\begin{itemize}
+\item\href{https://networkx.github.io/}{\beamergotobutton{NetworkX}}
+\item\href{https://scipy.org}{\beamergotobutton{SciPy}}
+\item<2-> Google search: python workign with graphs  
+\end{itemize}
+\end{exampleblock}
+\begin{exampleblock}{R}
+\item\href{https://cran.r-project.org/web/packages/gRbase/vignettes/gRbase-graphs.pdf}{\beamergotobutton{gRBase}}
+\item<2-> \href{https://cran.r-project.org/}{Search:} workign with graphs, graphs
+\end{itemize}
+\end{exampleblock}
 \end{frame}
 % -----------------------------------------
