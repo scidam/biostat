@@ -1115,11 +1115,55 @@ $\\
 % -----------------------------------------
 
 
+% ---------------- слайд 38 ---------------
+\begin{frame}
+\frametitle{Вычислительные среды для анализа данных}
+\begin{itemize}
+\item R, \texttt{http://r-project.org} + Packages (\texttt{https://cran.r-project.org/})
+\item Python, \texttt{http://python.org}
+	\begin{itemize}
+	\item Pandas, \texttt{http://pandas.pydata.org}
+	\item SciPy+NumPy, \texttt{http://scipy.org}
+	\item Matplotlib, \texttt{http://matplotlib.org/}
+	\item Scikit-learn, \texttt{http://scikit-learn.org/}
+	\item[\ldots] Packages
+\end{itemize}
+\item Statistica, \texttt{http://statsoft.com}
+\item MatLab, \texttt{http://www.mathworks.org}
+\end{itemize}
+Интерактивные среды
+\begin{columns}
+\begin{column}{5cm}
+\begin{exampleblock}{RStudio Server}
+www.rstudio.com
+\end{exampleblock}
+\end{column}
+\begin{column}{0.5cm}
+\end{column}
+\begin{column}{5cm}
+\begin{exampleblock}{Jupiter Notebook}
+ipython.org/notebook.html
+\end{exampleblock}
+\end{column}
+\end{columns}
+\end{frame}
+% -----------------------------------------
 
 
+% ---------------- слайд 39 ---------------
+\begin{frame}
+\frametitle{Информационные ресурсы}
+R: 
+\begin{itemize}
+\item http://www.statmethods.net/
+\item C.Э Мастицкий, В.К. Шитиков Статстический анализ и визуализация данных c помощью R, 2014.
+\end{itemize}
+Python: 
+\begin{itemize}
+\item http://python.org
+\item М. Лутц Программирование на Python, 2011
+\item У. Маккинни Python и анализ данных, 2015
+\end{itemize}
 
-
-
-
-
-
+\end{frame}
+% -----------------------------------------
