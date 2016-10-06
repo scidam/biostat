@@ -60,39 +60,41 @@ $$
 \task Даны два мультимножества, состоящие из символов:
 $$
 \begin{array}{l}
-A = [1,1,2,2,2,4,7,8,9,p,p]
+A = [1,1,2,2,2,4,7,8,9,p,p] \\
 B = [4,5,2,2,2,1,4,4,4,4,q,q]
 \end{array}
 $$
 Вычислить меры Жаккара, Дайса и Кульчинского.
 
 
-\task Вычислить меру Дайса для двух списков (с повторениями) видов \texttt{lec3_measures_var1.dat}.
+\task Вычислить меру Дайса для двух списков (с повторениями) видов \texttt{lec3\_measures\_var1.dat}.
+
 \begin{tabular}{ll}
 Caldesia reniformis;&Caldesia reniformis\\
 Caldesia reniformis;&Strobilanthes isophyllus\\
 Strobilanthes isophyllus;&Onychium japonicum\\
 Pseuderanthemum atropurpureum;&Agave filifera\\
 Caldesia reniformis;&Allium spirale\\
+\ldots &
 \end{tabular} 
-\ldots
-
 
 \task Вы сравниваете флористические списки. Матрица мер сходства Жаккара успешно посчитана до вас, но содержит ошибки.
-Попробуйте определить при сравнении каких именно списков (они нумеруются по строкам\столбцам матрицы)
-была допущена ошибка. Матрица дана в файле \texttt{lec3_bigmat_var1.dat}
+Попробуйте определить при сравнении каких именно списков (они нумеруются по строкам/столбцам матрицы)
+была допущена ошибка. Матрица дана в файле \texttt{lec3\_bigmat\_var1.dat}
 
 
 \task Исследуется эффективность действия удобрения на рост растений. Для этого 100 тестовых образцов 
 были разделены в пропорции 2:3 на тестовые (не подвергавшиеся обработки удобрением) и остальные, которые
 подлежали обработке. Через месяц был произведен  учет растений, в результате которого были подсчитаны растения
 показавшие 10 сантиметровый прирост.
+
 \begin{tabular}{l|l|l|l}
 &  не удобрено & удобрено & $\sum$ \\ \hline
 прирост>$10$ см & $10$ & $43$ & $53$ \\\hline
 прирост<$10$ см & $30$ & $17$ & $47$ \\\hline
 $\sum$ & $40$ & $60$ & $100$
 \end{tabular}
+
 Можно ли сказать, что данные результаты не следствие случая, а действия удобрения?
 
 
@@ -100,9 +102,9 @@ $\sum$ & $40$ & $60$ & $100$
 \task Чему равна вероятность наблюдать таблицу сопряженности $2\times 2$ следующего вида:
 \begin{table}[H]
 \centering
-\begin{tabular}{l|l|}
+\begin{tabular}{l|l}
 $7$ & $50$  \\\hline
-$45$ & $38$ \\\hline
+$45$ & $38$ 
 \end{tabular}
 \end{table}
 Привести точное выражение для вероятности и вычислить приближенное значение 
@@ -132,7 +134,7 @@ $$
 построена матрица смежности: если сходство между $i$ и $j$ было существенным, то соответствующий $(i,j)$-элемент
 матрицы выбирался равным 1, в противном случае 0. Найти все совокупности сходных групп пробных площадей, являющиеся
 компонентами связности графа заданного построенной матрицей смежности. Матрица смежности дана в файле: 
-\texttt{lec3_datamat_var1.dat}
+\texttt{lec3\_datamat\_var1.dat}
 
 
 
@@ -153,36 +155,36 @@ $$
 
 
 \task Чему равна вероятность реализации графа
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[node distance   = 2 cm]
-  \useasboundingbox (-1,-1) rectangle (11,11); 
   \tikzset{VertexStyle/.style = {shape          = circle,
-                                 ball color     = orange,
+                                 ball color     = gray,
                                  text           = black,
                                  inner sep      = 2pt,
                                  outer sep      = 0pt,
                                  minimum size   = 24 pt}}
   \tikzset{EdgeStyle/.style   = {thick,
-                                 double          = orange,
+                                 double          = black,
                                  double distance = 1pt}}
-  \tikzset{LabelStyle/.style =   {draw,
-                                  fill           = yellow,
-                                  text           = red}}
+
      \node[VertexStyle](A){A};
      \node[VertexStyle,right=of A](B){B};
      \node[VertexStyle,right=of B](C){C};
      \node[VertexStyle,above= 2 cm of B](D){D};
      \node[VertexStyle,right=of D](E){E};     
-     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
+     \draw[EdgeStyle](B) to node[]{} (D) ;
      \tikzset{EdgeStyle/.append style = {bend left}}
-     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
-     \draw[EdgeStyle](B) to node[LabelStyle]{3} (A);
-     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
-     \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
-     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
-     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
-     \draw[EdgeStyle](B) to node[LabelStyle]{8} (E);
-     \draw[EdgeStyle](A) to node[LabelStyle]{9} (E);
+     \draw[EdgeStyle](A) to node[]{} (B);
+     \draw[EdgeStyle](B) to node[]{} (A);
+     \draw[EdgeStyle](B) to node[]{} (C);
+     \draw[EdgeStyle](C) to node[]{} (B);
+     \draw[EdgeStyle](A) to node[]{} (D);
+     \draw[EdgeStyle](D) to node[]{} (C);
+     \draw[EdgeStyle](B) to node[]{} (E);
+     \draw[EdgeStyle](A) to node[]{} (E);
   \end{tikzpicture}
+\end{figure}
 Если известно, что у графа обязательно должно быть 9 ребер. 
 
 
@@ -216,46 +218,51 @@ $$
 \task Рассматривая две строки как мультимножества, состоящие из символов:
 $$
 \begin{array}{l}
-A = 'jaccard1901',
+A = 'jaccard1901', \\
 B = 'dice1948',
 \end{array}
 $$
 вычислить меры Жаккара, Дайса и Кульчинского.
 
-\task Вычислить меру Жаккара для двух списков (с повторениями) видов \texttt{lec3_measures_var2.dat}.
+\task Вычислить меру Жаккара для двух списков (с повторениями) видов \texttt{lec3\_measures\_var2.dat}.
+
 \begin{tabular}{ll}
 Agave stricta; &Lithops aucampiae\\
 Aloe aristata; &Pseuderanthemum atropurpureum\\
 Aloe aristata; &Allium schoenoprasum\\
 Plumeria rubra; &Hosta rectifolia\\
 Allium spirale;&Allium schoenoprasum\\
+\ldots  &
 \end{tabular} 
-\ldots
+
 
 \task Вы сравниваете флористические списки. Матрица мер сходства успешно посчитана до вас, но содержит ошибки.
-Попробуйте определить при сравнении каких именно списков (они нумеруются по строкам\столбцам матрицы)
-была допущена ошибка. Матрица дана в файле \texttt{lec3_bigmat_var2.dat}
+Попробуйте определить при сравнении каких именно списков (они нумеруются по строкам/столбцам матрицы)
+была допущена ошибка. Матрица дана в файле \texttt{lec3\_bigmat\_var2.dat}
 
 
 \task Исследуется эффективность действия удобрения на рост растений. Для этого 100 тестовых образцов 
 были разделены в пропорции 1:3 на тестовые (не подвергавшиеся обработки удобрением) и остальные, которые
 подлежали обработке. Через месяц был произведен  учет растений, в результате которого были подсчитаны растения
 показавшие 10 сантиметровый прирост.
+
 \begin{tabular}{l|l|l|l}
 &  не удобрено & удобрено & $\sum$ \\ \hline
 прирост>$10$ см & $6$ & $18$ & $24$ \\\hline
 прирост<$10$ см & $19$ & $57$ & $76$ \\\hline
 $\sum$ & $25$ & $75$ & $100$
 \end{tabular}
+
 Можно ли сказать, что данные результаты не следствие случая, а действия удобрения?
 
 
 \task Чему равна вероятность наблюдать таблицу сопряженности $2\times 2$ следующего вида:
+
 \begin{table}[H]
 \centering
-\begin{tabular}{l|l|}
+\begin{tabular}{l|l}
 $25$ & $35$  \\\hline
-$4$ & $18$ \\\hline
+$4$ & $18$
 \end{tabular}
 \end{table}
 Привести точное выражение для вероятности и вычислить приближенное значение 
@@ -283,7 +290,38 @@ $$
 построена матрица смежности: если сходство между $i$ и $j$ было существенным, то соответствующий $(i,j)$-элемент
 матрицы выбирался равным 1, в противном случае 0. Найти все совокупности сходных групп пробных площадей, являющиеся
 компонентами связности графа заданного построенной матрицей смежности. Матрица смежности дана в файле: 
-\texttt{lec3_datamat_var2.dat}
+\texttt{lec3\_datamat\_var2.dat}
+
+
+\task Чему равна вероятность реализации графа
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance   = 1.5 cm]
+  \tikzset{VertexStyle/.style = {shape          = circle,
+                                 ball color     = gray,
+                                 text           = black,
+                                 inner sep      = 2pt,
+                                 outer sep      = 0pt,
+                                 minimum size   = 24 pt}}
+  \tikzset{EdgeStyle/.style   = {thick,
+                                 double          = black,
+                                 double distance = 1pt}}
+
+     \node[VertexStyle](A){A};
+     \node[VertexStyle,right=of A](B){B};
+     \node[VertexStyle,right=of B](C){C};
+     \node[VertexStyle,above= 2 cm of B](D){D};     
+     \draw[EdgeStyle](B) to node[]{} (D) ;
+     \tikzset{EdgeStyle/.append style = {bend left}}
+     \draw[EdgeStyle](A) to node[]{} (B);
+     \draw[EdgeStyle](B) to node[]{} (A);
+     \draw[EdgeStyle](B) to node[]{} (C);
+     \draw[EdgeStyle](C) to node[]{} (B);
+     \draw[EdgeStyle](A) to node[]{} (D);
+     \draw[EdgeStyle](D) to node[]{} (C);
+  \end{tikzpicture}
+\end{figure}
+Если известно, что у графа обязательно должно быть 7 ребер. 
 
 
 \task Граф задан матрицей смежности. Найти его матрицу инциденций.
@@ -300,35 +338,7 @@ $$
 
 \task Чему равна сумма элементов матрицы смежности для полного графа с числом вершин $n$? 
  
-\task Чему равна вероятность реализации графа
-\begin{tikzpicture}[node distance   = 2 cm]
-  \useasboundingbox (-1,-1) rectangle (11,11); 
-  \tikzset{VertexStyle/.style = {shape          = circle,
-                                 ball color     = orange,
-                                 text           = black,
-                                 inner sep      = 2pt,
-                                 outer sep      = 0pt,
-                                 minimum size   = 24 pt}}
-  \tikzset{EdgeStyle/.style   = {thick,
-                                 double          = orange,
-                                 double distance = 1pt}}
-  \tikzset{LabelStyle/.style =   {draw,
-                                  fill           = yellow,
-                                  text           = red}}
-     \node[VertexStyle](A){A};
-     \node[VertexStyle,right=of A](B){B};
-     \node[VertexStyle,right=of B](C){C};
-     \node[VertexStyle,above= 2 cm of B](D){D};     
-     \draw[EdgeStyle](B) to node[LabelStyle]{1} (D) ;
-     \tikzset{EdgeStyle/.append style = {bend left}}
-     \draw[EdgeStyle](A) to node[LabelStyle]{2} (B);
-     \draw[EdgeStyle](B) to node[LabelStyle]{3} (A);
-     \draw[EdgeStyle](B) to node[LabelStyle]{4} (C);
-     \draw[EdgeStyle](C) to node[LabelStyle]{5} (B);
-     \draw[EdgeStyle](A) to node[LabelStyle]{6} (D);
-     \draw[EdgeStyle](D) to node[LabelStyle]{7} (C);
-  \end{tikzpicture}
-Если известно, что у графа обязательно должно быть 7 ребер. 
+
  
  
 \end{document}
