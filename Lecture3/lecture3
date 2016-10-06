@@ -523,17 +523,22 @@ $$
 % --------------- слайд 15 ----------------
 \begin{frame}
 \frametitle{Программные пакеты для работы с графами}
+
 \begin{exampleblock}{Python}
 \begin{itemize}
-\item\href{https://networkx.github.io/}{\beamergotobutton{NetworkX}}
-\item\href{https://scipy.org}{\beamergotobutton{SciPy}}
-\item<2-> Google search: python workign with graphs  
+\item \href{https://networkx.github.io/}{\beamergotobutton{NetworkX}} (https://networkx.github.io/)
+\item \href{https://scipy.org}{\beamergotobutton{SciPy}} (https://scipy.org)
+\item<2-> \href{http://google.com}{\beamergotobutton{Google search:}} python workign with graphs  
 \end{itemize}
 \end{exampleblock}
+
 \begin{exampleblock}{R}
-\item\href{https://cran.r-project.org/web/packages/gRbase/vignettes/gRbase-graphs.pdf}{\beamergotobutton{gRBase}}
-\item<2-> \href{https://cran.r-project.org/}{Search:} workign with graphs, graphs
+\begin{itemize}
+\item \href{https://cran.r-project.org/web/packages/gRbase/vignettes/gRbase-graphs.pdf}{\beamergotobutton{gRBase}} (https://cran.r-project.org/web/packages/gRbase/vignettes/gRbase-graphs.pdf)
+\item<2-> \href{https://cran.r-project.org/}{\beamergotobutton{Search:}} workign with graphs, graphs
 \end{itemize}
+
 \end{exampleblock}
+
 \end{frame}
 % -----------------------------------------
