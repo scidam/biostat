@@ -339,25 +339,24 @@ $$
 
 
 % ---------------- слайд 13 ---------------
-\begin{frame}
-\frametitle{Формула полной вероятности}
+%\begin{frame}
+%\frametitle{Формула полной вероятности}
 
-\begin{block}{Утверждение}
-Если $A$ произвольное событие представимо в виде объединения попарно
-несовместных событий $B_1,B_2,\ldots,B_n$, или
-$A\subset\mathop{\bigcup}\limits_{k=1}^n B_k$, то
-\begin{center} $P(A)=\sum\limits_{k=1}^n P(B_k)P(A|B_k).$
-\end{center}
-\end{block}
+%\begin{block}{Утверждение}
+%Если $A$ произвольное событие представимо в виде объединения попарно
+%несовместных событий $B_1,B_2,\ldots,B_n$, или
+%$A\subset\mathop{\bigcup}\limits_{k=1}^n B_k$, то
+%\begin{center} $P(A)=\sum\limits_{k=1}^n P(B_k)P(A|B_k).$
+%\end{center}
+%\end{block}
 
-\begin{block}{Формула  Т.~Байеса (1703--1762)}
-При условиях предыдущего утверждения справедливо:
-$$P(B_k|A)=\dfrac{P(A\cap
-B_k)}{P(A)}=\dfrac{P(A|B_k)P(B_k)}{\sum\limits_{k=1}^n P(A\cap
-B_k)P(B_k)}.$$
-\end{block}
-\end{frame}
-
+%\begin{block}{Формула  Т.~Байеса (1703--1762)}
+%При условиях предыдущего утверждения справедливо:
+%$$P(B_k|A)=\dfrac{P(A\cap
+%B_k)}{P(A)}=\dfrac{P(A|B_k)P(B_k)}{\sum\limits_{k=1}^n P(A\cap
+%B_k)P(B_k)}.$$
+%\end{block}
+%\end{frame}
 % -----------------------------------------
 
 % ---------------- слайд 14 ---------------
@@ -476,7 +475,6 @@ n=2500,\, p=1/5,\, q=4/5,\, m1=m+1,\, m2=2500.
 $$
 \end{exampleblock}
 \end{frame}
-
 % -----------------------------------------
 
 
