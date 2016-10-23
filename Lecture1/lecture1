@@ -382,9 +382,6 @@ $P(\xi=x_i)=p_i$. Множество $\{(x_i,p_i)\}$ образуют закон
 % -----------------------------------------
 
 
-
-
-
 % ---------------- слайд 20 ---------------
 
 \begin{frame}
@@ -406,6 +403,7 @@ $P(\xi=x_i)=p_i$. Множество $\{(x_i,p_i)\}$ образуют закон
 \end{exampleblock}
 \end{frame}
 % -----------------------------------------
+
 
 % ---------------- слайд 21 ---------------
 
@@ -586,7 +584,6 @@ $\textrm{E}\xi_1\xi_2=\textrm{E}\xi_1\textrm{E}\xi_2$, если $\xi_1$ и $\xi_
 произвольные действительные числа.
 \end{block}
 \end{frame}
-
 % -----------------------------------------
 
 
@@ -601,7 +598,6 @@ $\xi_1,\xi_2$ являются независимыми;
 \alpha\in\mathbb{R}$; $\textrm{D}(\alpha\xi)=\alpha^2\textrm{D}\xi$;
 \end{itemize}
 \end{block}
-
 \begin{block}{Характеристики некоторых распределений}
 \begin{itemize}
 \item $\xi\in \mathbf{U}_{[0,1]}$ --- равномерное распределение на
@@ -615,7 +611,6 @@ f_{\xi}(x)=\dfrac{1}{\sqrt{2\pi}}\textrm{e}^{-x^2/2}$ --- нормальное
 $\rm{D}\xi=\sigma^2$; $(\xi\in\mathcal{N}(a,\sigma^2))$.
 \end{itemize}
 \end{block}
-
 \end{frame}
 % -----------------------------------------
 
@@ -798,31 +793,6 @@ $$
 \end{frame}
 % -----------------------------------------
 
-% ---------------- слайд 35 ---------------
-\begin{frame}
-\frametitle{Предельные теоремы}
-\begin{block}{Интегральная теорема Муавра--Лапласа}
-Если $p$ вероятность успеха в серии $n$ испытаний по схеме Бернулли ($\nu_n$ -- число успехов в $n$ испытаниях), то
-$$
-P\left(\dfrac{\nu_n-np}{\sqrt{np(1-p)}}<
-x\right)\xrightarrow[{\mbox{{\small при }}\,\displaystyle
-n\rightarrow\infty}]{}\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
-$$
-\end{block}
-
-\begin{exampleblock}{Альтернативная формулировка теоремы}
-{\scriptsize
-Пусть $\{\xi_i\}, i=1,n$ одинаково распределенные независимые случайные величины, {\color{magenta} такие что
-$P(\xi_i=1)=p, P(\xi_i=0)=1-p, \forall i$}, тогда если положить
-$\zeta_n=\dfrac{-pn+\sum\limits_{i=1}^n \xi_i}{\sqrt {n {\rm D}\xi_i}}$, (${\rm D}\xi_i=p(1-p)$), то
-$
-\lim\limits_{n\rightarrow\infty}P(\zeta_n<x)=
-\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
-$
-}
-\end{exampleblock}
-\end{frame}
-% -----------------------------------------
 
 % ---------------- слайд 36 ---------------
 \begin{frame}
