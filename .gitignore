@@ -10,3 +10,4 @@
 Lect*/*.tex
 *.out
 *.vrb
+*.pyc
