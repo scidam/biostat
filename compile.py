@@ -1,10 +1,13 @@
-#coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Author: Dmtiry E. Kislov
 # E-mail: kislov@easydan.com
 
 import re
-import subprocess, os, sys
+import os
+import sys
+import subprocess
 from jinja2 import Template
 
 lecture_pat = re.compile('.*Lecture.*')
@@ -30,7 +33,6 @@ for root, dirs, files in os.walk("."):
                         f.write(template.render(content=texdata.decode('utf-8')).encode('utf-8'))
                     toeval.append(os.path.join(root, ff+'.tex'))
 
-                
 for lect in toeval:
     pp, ff = os.path.split(lect)
     os.chdir(pp)
