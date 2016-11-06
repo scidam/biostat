@@ -752,7 +752,7 @@ $\varepsilon_i$ -- случайная величина с нулевым сре�
 $$
 P(|\hat l - l|\geq\varepsilon)\leq\gamma,
 $$ 
-где $\hat l = \sum\limits_i l_i$ -- оценка среднего,  $\gamma$ и $\varepsilon$ -- заданные показатели точности.
+где $\hat l = \frac{1}{N}\sum\limits_i l_i$ -- оценка среднего,  $\gamma$ и $\varepsilon$ -- заданные показатели точности.
 }
 \end{exampleblock}
 }
@@ -775,7 +775,7 @@ $$
 Из неравенства Чебышева, полагая $\gamma = \dfrac{n\sigma^2}{n^2\varepsilon^2}$, получим:
 $$
 \begin{array}{l}
- l_i = l + \varepsilon_i,  \hat l = \sum\limits_i l_i\\
+	l_i = l + \varepsilon_i,  \hat l = \frac{1}{N}\sum\limits_i l_i\\
 P\left(\left | \frac{1}{n}\sum\limits_i \varepsilon_i\right|\geq\varepsilon\right)\leq\dfrac{\sigma^2}{n\varepsilon^2}\leq\gamma\\
 n\geq\dfrac{\sigma^2}{\gamma\varepsilon^2}=\dfrac{0.5}{0.01\cdot 0.01}=5000
 \end{array}
