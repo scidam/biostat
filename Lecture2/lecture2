@@ -92,7 +92,7 @@ $\sum\limits_i\alpha_i=1$, также является состоятельно�
 несмещенной оценкой $a$;
 \item $\hat\sigma^2_1=\dfrac{1}{n}\sum\limits_i(x_i-\hat a_1)^2$ ---
 состоятельна, но смещена;
-\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)$ ---
+\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)^2$ ---
 состоятельна и несмещена.
 \end{enumerate}
 \end{exampleblock}
@@ -199,7 +199,7 @@ $p=1-\alpha$, $\alpha$ -- уровень значимости.
 Интервальная оценка дисперсии:
 
 $$
-\dfrac{1}{\chi^2_{\gamma_1}}\sum\limits_{i=1}^n(\overline x - x_i)^2\leq\hat\sigma^2\leq
+\dfrac{1}{\chi^2_{\gamma_1}}\sum\limits_{i=1}^n(\overline x - x_i)^2\leq\sigma^2\leq
 \dfrac{1}{\chi^2_{\gamma_2}}\sum\limits_{i=1}^n(\overline x - x_i)^2
 $$
 где
