@@ -36,6 +36,6 @@ for root, dirs, files in os.walk("."):
 for lect in toeval:
     pp, ff = os.path.split(lect)
     os.chdir(pp)
-    subprocess.call(['pdflatex', ff])
-    subprocess.call(['pdflatex', ff])
+    subprocess.call(['pdflatex', '--shell-escape', ff])
+    subprocess.call(['pdflatex', '--shell-escape', ff])
     os.chdir('..')
