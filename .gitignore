@@ -11,3 +11,4 @@ Lect*/*.tex
 *.out
 *.vrb
 *.pyc
+!lect*.pdf
