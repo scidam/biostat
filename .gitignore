@@ -12,3 +12,5 @@ Lect*/*.tex
 *.vrb
 *.pyc
 !lect*.pdf
+*.table
+*.gnuplot
