@@ -265,22 +265,13 @@
 	\begin{array}{l}
 		U_x = mn + 0.5n(n+1)-\sum\limits_ir(x_i) \\
 		U_y = mn + 0.5m(m+1)-\sum\limits_jr(y_j)
-	U=\min(U_x,U_y).
+	U=\min(U_x,U_y)
 	\end{array}
 	$$
 	\end{block}
         Если $U\in[U_1(\alpha),U_2(\alpha)]$, то $H_0$ отклоняется.
 	}
-	\only<3->{
-	\begin{block}{Критерий Манна-Уитни-Уилкоксона}
-	$$
-	\begin{array}{l}
-		R = m\cdot n \dfrac{n(n+1)}2{}-\sum\limits_j\sum\limits_i w_{ij},\\
-	w_{ij}=\left\{\begin{array}{l}0, x_i<y_j\\ 1 x_i>y_j\end{array}\.
-	\end{array}
-	$$
-	\end{block}
-	При $n,m>20$ выражение, основанное на $R$ может быть приближено нормальным распределением.}
+	При $n,m>20$ выражение, основанное на $U$ может быть приближено нормальным распределением.
 \end{frame}
 % -----------------------------------------
 
