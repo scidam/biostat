@@ -49,8 +49,14 @@
 
 % --------------- слайд 4 -----------------
 \begin{frame}
-\frametitle{}
-
+\frametitle{Расстояние между объектами}
+Полагается, что объекты $x,y$ имеют координаты $x_1,\ldots,x_n$ и $y_1,\ldots,y_n$.
+\begin{itemize}
+	\item<1-> Евклидово расстояние: $\rho(x, y) =\sum\limits_j(x_j-y_j)^2$;
+	\item<2-> Расстояние Чебышева: $\rho(x, y) = \max_j|x_j-y_j|$;
+	\item<3-> Расстояние city-block: $\rho(x, y) = \sum\limits_i|x_i-y_i|$;
+	\item<4-> Расстояние Минковского: $\rho(x,y)^p=\sum\limits_i(x_i-y_i)^p$;
+	\end{itemize}
 \end{frame}
 % -----------------------------------------
 
