@@ -89,7 +89,7 @@
 % --------------- слайд 7 -----------------
 \begin{frame}
 \frametitle{Представление иерархической кластеризации в виде дендрограммы}
-\includegraphics[width=6cm]{dendrogram.png}
+\includegraphics[width=11cm]{dendrogram.jpg}
 \end{frame}
 % -----------------------------------------
 
