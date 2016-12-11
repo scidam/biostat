@@ -14,9 +14,10 @@
 \begin{itemize}
 \item<1-> Принцип наименьших квадратов;
 \item<2-> Метод главных компонент;
-\item<3-> Регрессионный анализ;
-\item<4-> Кластерный анализ, иерархическая кластеризация и метод k-средних;
- \end{itemize}
+\item<3-> Линейный дискриминантный анализ;
+\item<4-> Классификация по прецедентам;
+\item<5-> Оценка качества классификации, отбор признаков.
+\end{itemize}
 \end{frame}
 % -----------------------------------------
 
@@ -24,7 +25,100 @@
 % --------------- слайд 3 -----------------
 \begin{frame}
 \frametitle{Принцип наименьших квадратов}
-
-
+\begin{columns}
+	\begin{column}{5cm}
+		Предложен К.Ф. Гауссом (1795) для решения уравнений:
+		$$
+		\begin{array}{l}
+			a_1x+b_1y = c_1\only<2->{+\varepsilon_1}\\
+			a_2x+b_2y = c_2\only<2->{+\varepsilon_2}\\
+			a_3x+b_3y = c_3\only<2->{+\varepsilon_3}\\
+			\only<2->{
+			\varepsilon_1^2+\varepsilon_2^2+\varepsilon_3^2\rightarrow\min
+			}
+		\end{array}
+		$$
+	\end{column}
+	\begin{column}{5cm}
+	Задача регрессии
+	\includegraphics[width=5cm]{mnk.png}
+	\end{column}
+\end{columns}
 \end{frame}
 % -----------------------------------------
+
+% --------------- слайд 4 -----------------
+\begin{frame}
+\frametitle{Принцип наименьших квадратов}
+\begin{exampleblock}{Применение}
+	\begin{itemize}
+		\item<1-> Решение переопределенных/недоопределенных систем уравнений;
+		\item<2-> Статистическая оценка параметров;
+		\item<3-> Решение задач снижения размерности;
+		\item<4-> Построение регрессионных моделей;
+		\item<5-> \ldots в общем случае --- любые другие задачи,
+			связанные с минимизацией ошибок/погрешностей.
+	\end{itemize}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 5 -----------------
+\begin{frame}
+\frametitle{Принцип наименьших квадратов}
+\begin{exampleblock}{Задача регрессии}
+	Имеется набор измерений $y_j$ ($j=\overline{1,\ldots,N}$, 
+	предположительно зависящий от параметров $x_{ij}$ ($i=\overline{1,\ldots,M}$).
+	Необходимо построить какую-либо модель этой зависимости, исходя из
+	набора эмпирических данных.
+\end{exampleblock}
+\only<2->{
+\begin{alertblock}{Положим,что зависимость между $y_i$ и $x_{ij}$ линейная}
+\end{alertblock}}
+\only<3->{
+	$$\begin{array}{l}
+	y_1 = a_0 + a_1\cdot x_{11} + a_2\cdot x_{21}+\ldots + a_M\cdot x_{M1} \only<4->{+\varepsilon_1} \\
+	y_2 = a_0 + a_1\cdot x_{12} + a_2\cdot x_{22}+\ldots + a_M\cdot x_{M2} \only<4->{+\varepsilon_2} \\
+	\vdots \\
+	y_N = a_0 + a_1\cdot x_{1N} + a_2\cdot x_{2N}+\ldots + a_M\cdot x_{MN} 
+	\only<4->{+\varepsilon_N}  \\
+	\end{array}
+	$$
+	\only<4->{$$\sum\limits_i\varepsilon_i^2\rightarrow\min$$}}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 6 -----------------
+\begin{frame}
+\frametitle{Принцип наименьших квадратов}
+\begin{exampleblock}{Решение}
+$$
+\begin{array}{l}
+	Y = X\cdot a +\varepsilon, a=(a_0,a_1,\ldots,a_M),\\
+	a = (X^TX)^{-1}XY, \mbox{или } a = X^{+}Y
+\end{array}
+$$
+\end{exampleblock}
+\begin{block}{Нелинейный МНК}
+	$$y_j = F(a_i,x_{ij})+\varepsilon_j$$
+\end{block}
+\only<2->{
+\begin{alertblock}{Решение}
+	Как правило -- численные методы:
+	нелинейные методы оптимизации, проблемно-ориентированные подходы.
+
+	А также \ldots
+	Существуют частные случаи -- легко приводимые к линейной задаче.
+\end{alertblock}}
+\end{frame}
+% -----------------------------------------
+
+% --------------- слайд 7 -----------------
+\begin{frame}
+\frametitle{Метод главных компонент}
+\begin{exampleblock}{Решение}
+\end{exampleblock}
+\end{frame}
+% -----------------------------------------
+
+
