@@ -95,7 +95,7 @@
 $$
 \begin{array}{l}
 	Y = X\cdot a +\varepsilon, a=(a_0,a_1,\ldots,a_M),\\
-	a = (X^TX)^{-1}XY, \mbox{или } a = X^{+}Y
+	a = (X^TX)^{-1}X^TY, \mbox{или } a = X^{+}Y
 \end{array}
 $$
 \end{exampleblock}
