@@ -19,7 +19,7 @@ except IndexError:
 
 with open('maintemplate.tex') as f:
     maintemplate = f.read()
-template = Template(unicode(maintemplate.decode('utf-8')))
+template = Template(maintemplate)
 
 toeval = []
 for root, dirs, files in os.walk("."):
@@ -30,7 +30,7 @@ for root, dirs, files in os.walk("."):
                     with open(os.path.join(root, ff), 'r') as f:
                         texdata = f.read()
                     with open(os.path.join(root, ff+'.tex'), 'w') as f:
-                        f.write(template.render(content=texdata.decode('utf-8')).encode('utf-8'))
+                        f.write(template.render(content=texdata))
                     toeval.append(os.path.join(root, ff+'.tex'))
 
 for lect in toeval:
@@ -39,3 +39,4 @@ for lect in toeval:
     subprocess.call(['pdflatex', '--shell-escape', ff])
     subprocess.call(['pdflatex', '--shell-escape', ff])
     os.chdir('..')
+
