@@ -14,3 +14,4 @@ Lect*/*.tex
 !lect*.pdf
 *.table
 *.gnuplot
+.idea
