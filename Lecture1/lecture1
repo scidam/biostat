@@ -10,7 +10,7 @@
 
 % --------------- слайд 2 -----------------
 \begin{frame}
-\frametitle{Структура лекционной программы (6 акад. часов)}
+\frametitle{Структура лекционной программы}
 \begin{itemize}
 \item общие представления о теории вероятностей (ТВ);
 \item введение в среду статистического анализа R;
@@ -82,42 +82,6 @@
 
 % ----------------------- Начало лекционных слайдов ----------------------------
 
-
-% --------------- слайд 7  -----------------
-\begin{frame}
-\frametitle{Важные исторические даты}
-\begin{itemize}
-\item[$\blacklozenge$] Х.~Гюйгенс (1629--1695): Первая книга по
-теории вероятностей -- "О расчетах в азартной игре".  Введено
-понятие среднего значения --- математического ожидания;
-\item[$\blacklozenge$] Зарождение статистики: Джон Граунт
-(1620--1674); Вильям Петти (1623--1687). "Естественные и
-политические наблюдения над бюллетенями смертности" (Граунт, 1662),
-"Политическая арифметика" (Петти, 1676);
-\end{itemize}
-\begin{columns}
-\begin{column}{4cm}
-\begin{figure}
-\includegraphics[height=3cm]{gugens}
-\caption{Х. Гюйгенс}
-\end{figure}
-\end{column}
-\begin{column}{4cm}
-\begin{figure}
-\includegraphics[height=3cm]{moivre}
-\caption{А. Муавр}
-\end{figure}
-\end{column}
-\begin{column}{4cm}
-\begin{figure}
-\includegraphics[height=3cm]{bernulli}
-\caption{Я. Бернулли}
-\end{figure}
-\end{column}
-\end{columns}
-\end{frame}
-% -----------------------------------------
-
 % ---------------- слайд 8 ----------------
 \begin{frame}
 \frametitle{Важные исторические даты}
@@ -144,7 +108,6 @@ E.~Нейман (1894--1977)  --- статистическая проверка 
 % -----------------------------------------
 
 % ---------------- слайд 9 ----------------
-
 \begin{frame}
 \frametitle{Предпосылки теории вероятностей: комбинаторные задачи}
 
@@ -210,10 +173,6 @@ $\dfrac{\nu}{n}$ -- его частота реализации (появлени
 % -----------------------------------------
 
 
-
-
-
-
 % --------------- слайд 2.a ---------------
 
 \begin{frame}
@@ -276,32 +235,6 @@ P(<<решка>>)=1/3. Какую модель следует выбрать?
 
 % -----------------------------------------
 
-% ---------------- слайд 9 ----------------
-
-\begin{frame}
-\frametitle{Аксиомы теории вероятностей (А.Н.~Колмогоров)}
-\textcolor{white}{Вероятностная модель явления построена, если:}
-\begin{itemize}
-\item Задано множество элементарных исходов эксперимента ($\Omega$) и
-возможных событий ($\mathcal{F}$);
-\item Каждому событию $A\in\mathcal{F}$ сопоставляется
-действительное число $P(A)\in[0,1]$, именуемое его вероятностью;
-\item $P(\Omega)=1$;
-\item Для любых двух событий $A$ и $B$, таких что $A\cap B=\emptyset$,
-выполнено $P(A\cup B)=P(A)+P(B)$;
-\end{itemize}
-\pause
-\begin{exampleblock}{Пример}
-В эксперименте с подбрасыванием монеты: $\Omega=$\{<<Орел>>,
-<<Решка>>\}; В качестве $\mathcal{F}$ можно выбрать \{$\Omega$,
-<<Орел>>, <<Решка>>, $\emptyset$\}, или $\mathcal{F}$=\{$\Omega$,
-$\emptyset$\},  и положить: $P$(<<Орел>>)=$p$, $P$(<<Решка>>)=$1-p$,
-$p<1$.
-\end{exampleblock}
-\end{frame}
-% -----------------------------------------
-
-
 
 % ---------------- слайд 14 ---------------
 \begin{frame}
@@ -337,7 +270,7 @@ $C_n^k=n!/(k!(n-k)!)$
 \only<2->{
 \begin{alertblock}{Решение}
 \begin{itemize}
-\item<2-> $(1/10)^{10}$ -- не приживется ни один, $1-(1/10)^{10}$ -- приживется хотябы один.
+\item<2-> $(9/10)^{10}$ -- не приживется ни один, $1-(9/10)^{10}$ -- приживется хотябы один.
 \item<3-> $\sum\limits_{k=1}^{10}C_{10}^k(1/10)^k(9/10)^{n-k}$
 \end{itemize}
 \end{alertblock}
@@ -646,164 +579,6 @@ $f_{\Xi}(x)=\dfrac{1}{(2\pi)^{n/2}\sqrt{\det(A^TA)}}\textrm{e}^{-(x-b)^T(A^TA)^{
 
 
 % ---------------- слайд 25 ---------------
-
-\begin{frame}
-\frametitle{Неравенство П.Л. Чебышева}
-\begin{exampleblock}{Утверждение}
-Если для случайной величины $\xi$ определена
-дисперсия, то
-$$
-P(|\xi-\textrm{E}\xi|\geq\varepsilon)\leq\dfrac{\textrm{D}\xi}{\varepsilon^2},
-$$
-выполнено для любого $\varepsilon$>0.
-\end{exampleblock}
-
-\begin{block}{Доказательство}
-{\scriptsize
-Пусть случайная величина $\xi$ непрерывно распределена и,
-кроме того, $\xi>0$. Дадим оценку вероятности
-$P(\xi\geq\varepsilon)$. Рассмотрим выражение для математического
-ожидания случайной величины $\xi$.
-$$
-\textrm{E}\xi=\int\limits_0^{\infty}xf_{\xi}(x)dx=\underbrace{\int\limits_0^{\varepsilon}xf_{\xi}(x)dx}\limits_{\geq0}+\int\limits_{\varepsilon}^{\infty}
-xf_{\xi}(x)dx\geq \int\limits_{\varepsilon}^{\infty}
-xf_{\xi}(x)dx\geq\varepsilon P(\xi\geq\varepsilon), \nonumber
-$$
-}
-\end{block}
-\end{frame}
-% -----------------------------------------
-
-% ---------------- слайд 34 ---------------
-\begin{frame}
-\frametitle{Неравенство П.Л. Чебышева}
-
-\only<1>{
-\begin{block}{Доказательство}
-{\scriptsize
-откуда следует, что
-$$
-P(\xi\geq\varepsilon)\leq\dfrac{\textrm{E}\xi}{\varepsilon}.
-\eqno{(*)}
-$$
-
-Положим $\eta=(\xi-\textrm{E}\xi)^2$, тогда
-$\textrm{E}\eta=\textrm{D}\xi$ и неравенство Чебышева является
-следствием  доказанного неравенства (*).
-}
-\end{block}
-}
-
-\only<1>{
-\begin{exampleblock}{Задача \task. (применение неравенства Чебышева)}
-{\scriptsize
-Требуется оценить число необходимых измерений листовой пластинки, чтобы с заданной точностью охарактеризовать ее
-среднюю длину. Каждое измерение длины представляет собой $l_i = l + \varepsilon_i$, где $l$ -- неизвестное среднее, 
-$\varepsilon_i$ -- случайная величина с нулевым средним и дисперсией $\sigma$. Сколько измерений необходимо провести, 
-чтобы выполнялись следующие условия по точности: 
-$$
-P(|\hat l - l|\geq\varepsilon)\leq\gamma,
-$$ 
-где $\hat l = \frac{1}{N}\sum\limits_i l_i$ -- оценка среднего,  $\gamma$ и $\varepsilon$ -- заданные показатели точности.
-}
-\end{exampleblock}
-}
-
-\only<2->{
-\begin{exampleblock}{Утверждение}
-Если для случайной величины $\xi$ определена
-дисперсия, то
-$$
-P(|\xi-\textrm{E}\xi|\geq\varepsilon)\leq\dfrac{\textrm{D}\xi}{\varepsilon^2},
-$$
-выполнено для любого $\varepsilon$>0.
-\end{exampleblock}
-}
-
-\only<2->{
-\begin{alertblock}{Решение.}
-{\scriptsize
-Пусть $\varepsilon=0.1$, $\gamma=0.01$, $\sigma^2=0.5$. 
-Из неравенства Чебышева, полагая $\gamma = \dfrac{n\sigma^2}{n^2\varepsilon^2}$, получим:
-$$
-\begin{array}{l}
-	l_i = l + \varepsilon_i,  \hat l = \frac{1}{N}\sum\limits_i l_i\\
-P\left(\left | \frac{1}{n}\sum\limits_i \varepsilon_i\right|\geq\varepsilon\right)\leq\dfrac{\sigma^2}{n\varepsilon^2}\leq\gamma\\
-n\geq\dfrac{\sigma^2}{\gamma\varepsilon^2}=\dfrac{0.5}{0.01\cdot 0.01}=5000
-\end{array}
-$$
-\only<3>{\color{red}{$n\geq5000$ -- грубая оценка, ее почти всегда можно улучшить}   }
-}
-\end{alertblock}
-}
-\end{frame}
-% -----------------------------------------
-
-
-% ---------------- слайд 36 ---------------
-\begin{frame}
-\frametitle{Центральная предельная теорема (Ц.П.Т.)}
-
-\begin{block}{Утверждение}
-Пусть $\{\xi_i\}$ последовательность независимых одинаково
-распределенных случайных величин, причем $\textrm{E}\xi_i=a$ и
-$\textrm{D} \xi_i=\sigma^2\in(0,\infty)$. Если $\zeta_n=\dfrac{-an+\sum\limits_{i=1}^n \xi_i}{\sqrt n\sigma},$
-то
-$$
-P(\zeta_n<x)\rightarrow\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt,
-$$
-равномерно по $x$ при $n\rightarrow\infty$
-\end{block}
-\end{frame}
-% -----------------------------------------
-
-% ---------------- слайд 37 ---------------
-\begin{frame}
-\frametitle{Применение Ц.П.Т.}
-\begin{block}{Задача \task.}
-{\scriptsize
-Дан набор измерений параметра $a$:  $a_i=a+\xi_i$,
-$i=1,n$. Погрешности измерений $\xi_i$ являются независимыми одинаково распределенными случайными величинами,
-имеющими нулевое математическое ожидание и дисперсию $\sigma$.
-В качестве оценки параметра $a$ принимается среднее арифметическое
-$\{a_i\}$: $\hat a=\dfrac{\sum\limits_i a_i}{n}$. Сколько измерений
-необходимо провести, чтобы достичь заданной точности $\varepsilon$
-с вероятностью выхода за пределы точности $\gamma$.}
-\begin{center}
-{\small\color{magenta} Решение}
-\end{center}
-\end{block}
-\begin{columns}
-\begin{column}{6cm}
-{\scriptsize
-Неравенство Чебышева\\
-$$
-P(\biggl|\dfrac{\sum\limits_i\xi_i}{n}\biggr|\geq\varepsilon)\leq\dfrac{\sigma^2}{n\varepsilon^2}\equiv\gamma,
-$$
-$n\geq\dfrac{\gamma^{-1}\sigma^2}{\varepsilon^2}$.\\ При $\sigma=1$,
-$\varepsilon=0.01$, $\gamma=0.01$:
-{\color{red} $n\geq10^6$}.
-}
-\end{column}
-\begin{column}{6cm}
-{\scriptsize Ц.П.Т.\\
-$
-P\left(\left|\dfrac{\sum\limits_i\xi_i}{n}\right|<
-\varepsilon\right)\approx\dfrac
-{2}{\sqrt{2\pi}}\int\limits_{0}^{\dfrac{\varepsilon\sqrt
-n}{\sigma}}
-e^{-t^2/2}dt\equiv 1-\gamma.
-$\\
-При тех же условиях: {\color{red}$n\geq2223$}.
-}
-\vspace{22pt}
-\end{column}
-\end{columns}
-\end{frame}
-% -----------------------------------------
-
-
-% ---------------- слайд 38 ---------------
 \begin{frame}
 \frametitle{Вычислительные среды для анализа данных}
 \begin{itemize}
@@ -838,21 +613,5 @@ ipython.org/notebook.html
 % -----------------------------------------
 
 
-% ---------------- слайд 39 ---------------
-\begin{frame}
-\frametitle{Информационные ресурсы}
-R: 
-\begin{itemize}
-\item C.Э Мастицкий, В.К. Шитиков Статстический анализ и визуализация данных c помощью R, 2014.
-\item http://www.statmethods.net/
-\end{itemize}
-Python: 
-\begin{itemize}
-\item У. Маккинни Python и анализ данных, 2015
-\item М. Лутц Программирование на Python, 2011
-\item Т. Сегран Программируем коллективный разум, 2008
-\item http://python.org
-\end{itemize}
-\end{frame}
-% --------------------------- --------------
+
 
