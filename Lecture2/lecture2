@@ -1,518 +1,394 @@
 % ---------- Титульный слайд -------------
-\title{Статистический анализ данных. Спецкурс.}
-\subtitle{Лекция 2. Оценивание параметров.}
-\author{Ботанический сад-институт ДВО РАН}% \\ \texttt{kislov@easydan.com}}
+\title{Многомерный анализ данных. Спецкурс.}
+\subtitle{Лекция 2. Анализ нечисловых данных}
+\author{ДВФУ/БСИ ДВО РАН}% \\ \texttt{kislov@botsad.ru}}
 \date{Кислов Д.Е. \\ \today}
 \maketitle
 % -----------------------------------------
 
 % --------------- слайд 2 -----------------
+
 \begin{frame}
-\frametitle{Принципы статистического вывода}
-\only<1-3>{
-\begin{alertblock}{Положение \No 1}
-Набор однородных измерений (значений) $x_1$, $x_2$,\ldots,$x_n$ некоторого параметра
-отождествляется с набором случайных величин, имеющих одинаковое распределение. Если $F_{\xi}(x)$ --
-функция этого распределения, то полагается, что $x_i\Subset F_{\xi}(x),\,\forall
-i$.
-\end{alertblock}
-}
-\only<2>{
-\begin{exampleblock}{Следствие 1}
-Любая характеристика выборки, функция $G$ от значений $x_1$,
-$x_2$,\ldots,$x_n$, является случайной величиной, распределение
-которой определяется видом функций $F_{\xi}(x)$ и $G$.
-\end{exampleblock}}
+\frametitle{Обработка нечисловых данных. Специфика задач.}
 
-\only<3-4>{
-\begin{exampleblock}{Следствие 2}
-Если функция распределения для случайной величины
-$G=G(x_1,x_2,\ldots,x_n)$ будет найдена, то можно будет строить
-суждения относительно широты гипотетического рассеяния
-совокупности значений $\{G\}$, как если бы $G$ вычислялось вновь и
-вновь по новым выборочным значениям $x_1$,
-$x_2$,\ldots,$x_n$.
-\end{exampleblock}}
+Особенности:
+\begin{itemize}
+\item<1-> нельзя применять арифметические операции (сложение, вычитание и т.п.)
+\item<2-> не всегда просто судить о сходстве объектов
+\item<3-> непременимы многие статистические понятия (среднее, дисперсия и т.п.) 
+\end{itemize}
 
-\only<4>{
-\begin{alertblock}{???}
-{\color{red} В общем случае (при произвольных $F$ и $G$) это крайне сложная
-задача...}
-\end{alertblock}
-}
+\only<4->{
+Как обрабатывать:
+\begin{itemize}
+\item<4-> проблемно-ориентированный подход: иногда можно назначать нечисловым показателям числовые метки
+\item<5-> можно работать с таблицами сопряженности признаков
+\item<6-> попробовать ввести количественные меры  <<близости>> объектов (учитывая специфику задачи)
+\item<7-> оценивать вероятности наличия тех или иных признаков на основе предельных теорем
+\end{itemize}}
 \end{frame}
 % -----------------------------------------
 
+
 % --------------- слайд 3 -----------------
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\def\rectangle{(-2,-1.6) rectangle (4, 1.6);}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{magenta!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
 \begin{frame}
-\frametitle{Оценка параметров}
-\begin{alertblock}{Постановка задачи}
-Имеется выборка $(x_1,x_2,\ldots,x_n)$ из распределения
-$F_{\xi}(x, \theta)$. Необходимо построить оценку неизвестного
-параметра $\theta$.
-\end{alertblock}
-\begin{overprint}
-\only<2->{
-\begin{exampleblock}{Набросок решения}
+\frametitle{Меры сходства и различия}
+\begin{columns}
+\begin{column}{6cm}
+\begin{tikzpicture}
+    
+    \only<2> {
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$a$}
+                                     \secondcircle;
+    \end{scope}
+    
+    }
+    \only<3>{
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+        \node at (1, 0) {$c$};
+    \end{scope}
+    }
+    \only<4> {
+    \begin{scope}
+        \clip \secondcircle;
+        \draw[filled, even odd rule] \secondcircle node {$b$}
+                                     \firstcircle;
+    \end{scope}
+    }    
+    \draw[outline] \firstcircle node {\only<1,5->{$A$}};
+    \only<1, 5->{\node at (1,0) {\small $A\cap B$};};
+    \draw[outline] \secondcircle node {\only<1,5->{$B$}};
+    \draw \rectangle;
+    \node[anchor=south] at (current bounding box.south) {$\Omega$};
+\end{tikzpicture}
+\\~\\
+\begin{tabular}{l|l|l|l}
+&  $B$ & $\overline{B}$ & $\sum$ \\ \hline
+$A$ & $c$ & $a$ & $a+c$ \\\hline
+$\overline{A}$ & $b$ & $d$ & $b+d$ \\\hline
+$\sum$ & $b+c$ & $a+d$ & $a+b+c+d$
+\end{tabular}
+$$
+\begin{array}{l}
+a=|A-B| \\
+b=|B-A| \\
+c=|A\cap B| \\
+d=|\Omega-A\cup B|
+\end{array}
+$$
+
+
+\end{column}
+\begin{column}{4cm}
+Основные меры:
 \begin{itemize}
-\item<2-> построение функции $\hat\theta_n=\hat\theta_n(x_1,\ldots,x_n)$;
-\item<3-> $\hat\theta_n$ --- случайная величина;
-\item<4-> из множества оценок $\hat\theta_n$ необходимо выбрать ту, которая обладает
-          желаемыми статистическими свойствами;
+\item<6-> $\dfrac{c}{a+b+c}$ {\small (Jaccard, 1901)}
+\item<7-> $\dfrac{2c}{a+b+2c}$ {\small (Чекановский, 1900; Dice, 1945; S\o rensen, 1948)}
+\item<8-> $\dfrac{c}{a+b}$ {\small (Кульчинский, 1927)}
+\item<9-> $\dfrac{c}{c+a}, \dfrac{c}{c+b}$ {\small (Шимкевич, 1926; Simpson, 1943)}
 \end{itemize}
-\end{exampleblock}
-}
-\only<5->{
-\begin{block}{Желаемые статистические свойства}
-\begin{itemize}
-\item<5-> $P(|\hat\theta_n-\theta|>\varepsilon)\rightarrow0,\,n\rightarrow\infty$ (состоятельность);
-\item<6-> $\textrm{E}(\hat\theta_n)=\theta$ (несмещенность);
-\item<7-> $\textrm{D}(\hat\theta_n)$ --- минимальна (эффективность);
-\end{itemize}
-\end{block}
-}
-\end{overprint}
+\end{column}
+\end{columns}
 \end{frame}
 % -----------------------------------------
 
 % --------------- слайд 4 -----------------
 \begin{frame}
-\frametitle{Оценка математического ожидания и дисперсии}
-\begin{block}{Задача}
-По выборке $(x_1,x_2,\ldots,x_n)$ оценить математическое
-ожидание ($a$) и дисперсию ($\sigma^2$) распределения,
-из которого сформирована выборка.
-\end{block}
-\begin{exampleblock}{Решение}
-\begin{enumerate}
-\item $\hat a_1=\dfrac{1}{n}\sum\limits_ix_i$, то $\hat a$ несмещенная
-и состоятельная;
-\item $\hat a_2=\sum\limits_i\alpha_ix_i$, где
-$\sum\limits_i\alpha_i=1$, также является состоятельной и
-несмещенной оценкой $a$;
-\item $\hat\sigma^2_1=\dfrac{1}{n}\sum\limits_i(x_i-\hat a_1)^2$ ---
-состоятельна, но смещена;
-\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)^2$ ---
-состоятельна и несмещена.
-\end{enumerate}
+\frametitle{Примеры вычислений}
+
+\only<1->{
+\begin{exampleblock}{Стул и тренога}
+Имеют 4 и 3 <<ноги>>  соответственно. Общее число ног $c=3$. Если A -- стул, B -- тренога, то $a=1$ и $b=0$.
+\only<2->{
+\begin{itemize}
+\item<2-> мера Жаккара $J=\dfrac{3}{1+0+3} = 0.75$
+\item<3-> мера Дайса $D=\dfrac{2\cdot 3}{1+0+2\cdot 3}=6/7\approx 0.857$  
+\item<4-> мера Кульчинского $K = \dfrac{3}{1+0}=3$
+\end{itemize}
+}
 \end{exampleblock}
+}
+\only<5>{
+\begin{alertblock}{Вычисления на R}
+\texttt{library(sets)}
+
+\texttt{set\_similarity(set(1,2,3,4),set(1,2,5),method="Jaccard")}
+
+[1] 0.4
+\end{alertblock}}
 \end{frame}
 % -----------------------------------------
+
 
 % --------------- слайд 5 -----------------
 \begin{frame}
-\frametitle{Оценки для нормально распределенных данных}
-\begin{block}{Задача}
-Дана выборка $x_1, x_2, \ldots, x_n$ из нормального распределения.
-Необходимо построить оценки математического ожидания и дисперсии распределения.
-\end{block}
-\begin{exampleblock}{Решение}
-\begin{itemize}
-\item $\hat a_1=\dfrac{1}{n}\sum\limits_ix_i$, то $\hat a$ несмещенная
-и состоятельная;
-\item $\hat\sigma^2_2=\dfrac{1}{n-1}\sum\limits_i(x_i-\hat a_1)$ ---
-состоятельна и несмещена.
-\end{itemize}
+\frametitle{Параметризация мер сходства}
+\begin{exampleblock}{Двухпараметрическое семейство мер (Б.И. Семкин, 2010):}
+$$
+\begin{array}{l} K_{\tau;\eta} =\left( \dfrac{K_{\tau}^{\eta}(A,B)+K_{\tau}^{\eta}(B,A)}{2}\right)^{1/\eta},
+\\ K_{\tau}(A,B) = \dfrac{|A\cap B|}{(1+\tau)|A|-\tau|A\cap B|},\\
+K_{\tau}(B,A) = \dfrac{|A\cap B|}{(1+\tau)|B|-\tau|A\cap B|} \\ -1<\tau<\infty, -\infty<\eta<\infty \end{array}
+$$
+В этом случае $K_{0;-1}$ и $K_{1;-1}$ совпадают с коэффициентами Сёренсена-Дайса и Жаккара соответственно. 
 \end{exampleblock}
-
-
-\begin{tikzpicture}[xscale=0.7,yscale=0.6]
-    \colorlet{col1}{blue!70}
-    \colorlet{col2}{blue!60}
-    \colorlet{col3}{blue!50}
-    \colorlet{col4}{blue!40}
-   \draw [help lines] (-4.25,-1.25) grid (4.25,1.5);
-   \draw [help lines,step=0.25cm] (-2.99,0) grid (2.99,0.99);
-
-\draw[color=col4,fill=col4] plot [domain=-3:-2] (\x,{0.3989*exp(-\x*\x/2)})
-  -- (-2,0) -- (-3,0) -- cycle;
-
-\draw[color=col3,fill=col3] plot [domain=-2:-1] (\x,{0.3989*exp(-\x*\x/2)})
-  -- (-1,0) -- (-2,0) -- cycle;
-
-\draw[color=col2,fill=col2] plot [domain=-1:0] (\x,{0.3989*exp(-\x*\x/2)})
-   -- (0,0)  -- (-1,0) -- cycle;
-
-\draw[color=col2,fill=col2] plot [domain=0:1] (\x,{0.3989*exp(-\x*\x/2)})
-    -- (1,0)  --  (0,0) -- cycle;
-
-\draw[color=col3,fill=col3] plot [domain=1:2] (\x,{0.3989*exp(-\x*\x/2)})
-   -- (2,0)  -- (1,0) -- cycle;
-
-\draw[color=col4,fill=col4] plot [domain=2:3] (\x,{0.3989*exp(-\x*\x/2)})
-   -- (3,0)  -- (2,0) -- cycle;
-
-\draw[->] (-4.25,0) -- (4.25,0) node [right] {$x$};
-
-    \foreach \pos/\label in {-3/$-3\sigma$,-2/$-2\sigma$,-1/$-\sigma$,
-            1/$\sigma$,2/$2\sigma$,3/$3\sigma$}
-        \draw (\pos,0) -- (\pos,-0.1) (\pos cm,-3ex) node
-            [anchor=base,inner sep=1pt]  {\label};
-
-    \draw (-0.1,1) -- (.1,1) node [right,inner sep=1pt] {$\sigma$};
-
-    \foreach \pos/\percent/\height in {1/34/0.5,2/14/0.25,3/2/0.125,4/0.1/0.1}
-    {
-      \node[text=col\pos,anchor=base,yshift=2pt,xshift=-0.925cm,
-        inner sep=1pt] at (\pos,\height) {\tiny $\percent\%$};
-      \node[text=col\pos,anchor=base,yshift=2pt,xshift=.925cm,
-        inner sep=1pt]  at (-\pos,\height) {\tiny $\percent\%$};
-    }
-
-     \draw[->] (0,-1.25) -- (0,1.5) node [above]
-     {$
-        \frac{1}{\sigma\sqrt{2\pi}}\exp\biggl(\frac{-x^2}{2\sigma^2}\biggr)
-     $};
-\end{tikzpicture}
-
+\only<2->{
+\begin{alertblock}{Вывод}
+Используемые меры имеют много общего, они в определенном смысле <<эквивалентны>>
+\end{alertblock}
+}
 \end{frame}
 % -----------------------------------------
-
 
 % --------------- слайд 6 -----------------
 \begin{frame}
-\frametitle{Формулы для доверительных интервалов}
-Пусть $x_1, x_2, \ldots, x_n$ выборка из нормального распределения. $a, \sigma^2$ -- неизвестные математическое
-ожидание и дисперсия этого распределения.
+\frametitle{Точный тест Фишера}
+\begin{exampleblock}{Задача}
+Исследуется вопрос об эффективности обработки с целью последующего проращивания
+жёлудей. В результате эксперимента построена следующая таблица
+сопряженности:
+\begin{tabular}{l|l|l|l}
+&  не взошел & взошел & $\sum$ \\ \hline
+обработано & $1$ & $10$ & $11$ \\\hline
+не обработано & $4$ & $3$ & $7$ \\\hline
+$\sum$ & $5$ & $13$ & $18$
+\end{tabular}
 
-Интервальная оценка среднего:
+Целесообразно ли применение данной обработки, или <<увеличение>> всхожести в результате обработки вполне могло возникнуть случайно?
+\end{exampleblock}
 
-$$
-\overline x - t_{\gamma}\dfrac{\hat\sigma}{\sqrt n} \leq a \leq\overline x + t_{\gamma}\dfrac{\hat\sigma}{\sqrt n}
-$$
-где
-$$
-\overline x = \dfrac{1}{n}\sum\limits_{i=1}^nx_i,
-\hat\sigma^2 = \dfrac{1}{n-1}\sum\limits_{i=1}^n(\overline x - x_i)^2
-$$
-$t_{\gamma}$ -- $\gamma$-квантиль распределения Стьюдента с $n-1$ степенями свободы. $\gamma = \dfrac{1+p}{2}$,
-$p=1-\alpha$, $\alpha$ -- уровень значимости.
+\only<2->{
+\begin{alertblock}{Решение}
+\footnotesize
+Нужно вычислить вероятность реализации  таблицы $[(1, 10),(4, 3)]$, а также более <<худшего>> варианта, $[(0,11),(5,2)]$,
+т.е. когда после обработки вообще все семена взошли. Если сумма этих вероятностей будет мала, то, вероятно, 
+что обработка (а не случайность) определяет исход прорастания.
+\end{alertblock}
+}
+
 \end{frame}
 % -----------------------------------------
+
 
 % --------------- слайд 7 -----------------
 \begin{frame}
-\frametitle{Формулы для доверительных интервалов (дисперсия)}
-Пусть $x_1, x_2, \ldots, x_n$ выборка из нормального распределения. $a, \sigma^2$ -- неизвестные математическое
-ожидание и дисперсия этого распределения.
+\frametitle{Точный тест Фишера}
 
-Интервальная оценка дисперсии:
+\only<1-2>{
+\begin{exampleblock}{Решение}
+\def\arraystretch{2.2}
+$$
+\begin{array}{l}\dfrac{C^1_{5}\cdot C^{10}_{13}}{C^{11}_{18}}+\dfrac{C^0_5C^{11}_{13}}{C^{11}_{18}} = \\
+\dfrac{1430}{31824} + \dfrac{78}{31824}\approx 0.047
+\end{array}
+$$
+\only<2->{Таким образом, вероятность наблюдать исход экспериента, или даже исход, когда все желуди взошли вследствие случая (а не действия
+обработки), равна около 4.7\%; это весьма маленькое значение, поэтому результаты наблюдений следует интерпретировать, что имеет
+место значимое влияние обработки на результат прорастания желудей.}
+\end{exampleblock}
+}
+\only<3->{
+\begin{alertblock}{Общий случай}
 
+\begin{tabular}{l|l|l|l}
+&  не взошел & взошел & $\sum$ \\ \hline
+обработано & $a$ & $b$ & $a+b$ \\\hline
+не обработано & $c$ & $d$ & $c+d$ \\\hline
+$\sum$ & $a+c$ & $b+d$ & $a+b+c+d$
+\end{tabular}
 $$
-\dfrac{1}{\chi^2_{\gamma_1}}\sum\limits_{i=1}^n(\overline x - x_i)^2\leq\sigma^2\leq
-\dfrac{1}{\chi^2_{\gamma_2}}\sum\limits_{i=1}^n(\overline x - x_i)^2
+\begin{array}{l}
+P(a,b; c,d) = \dfrac{C^a_{a+c}\cdot C^b_{b+d}}{C_n^{a+b}}=\dfrac{(a+c)!(b+d)!(a+b)!(c+d)!}{a!b!c!d!n!},\\
+n = a+b+c+d
+\end{array}
 $$
-где
-$$
-\overline x = \dfrac{1}{n}\sum\limits_{i=1}^nx_i,
-\hat\sigma^2 = \dfrac{1}{n-1}\sum\limits_{i=1}^n(\overline x - x_i)^2
-$$
-$\chi^2_{\gamma}$ -- $\gamma$-квантиль распределения $\chi^2$ с $n-1$ степенями свободы. $\gamma_1 = \dfrac{1+p}{2}$,
-$\gamma_1 = \dfrac{1-p}{2}$, $p=1-\alpha$, $\alpha$ -- уровень значимости.
+\end{alertblock}
+}
+
+\only<4>{
+\begin{block}{Односторонний тест: <<усугубление>> наблюдаемой ситуации}
+$\sum\limits_{j=0}^a P(j, \tilde b; \tilde c, \tilde d)$, при условии: $j+\tilde c = a+c$, $\tilde b + \tilde d= b+d$, $\tilde b + j =a+b$,
+$j + \tilde b+\tilde c +\tilde d =n$
+\end{block}
+}
+
+\only<5->{
+\begin{block}{Двусторонний тест\only<6->{: что считать <<усугублением>>?}}
+\only<7->{
+$\sum\limits_{\tilde a, \tilde b, \tilde c, \tilde d}P(\tilde a, \tilde b; \tilde b,\tilde d)$, суммирование при условиях:
+$P(\tilde a, \tilde b; \tilde c, \tilde d)\leq P(a,b;c,d)$,
+$\tilde a + \tilde b = a +b$, $\tilde c +\tilde d = c+d$ \ldots
+}
+\end{block}
+}
 \end{frame}
 % -----------------------------------------
+
 
 % --------------- слайд 8 -----------------
-\begin{frame}[fragile=singleslide]
-\frametitle{Вычисление доверительных интервалов на R}
-\begin{block}{Пример вычислений}
-Пусть x = (1.62081382, -1.52406491, -0.90221069,  0.34349028,  0.61838820, -0.80183081,
- -0.55995198, -0.71210125, -0.30742587,  0.23734660,  0.63370975, -1.04691828,
-0.96165012, -0.35549459, -0.61876437,  1.36677559,  0.09070588, -0.94914323,
-0.97321593, -1.73956125) выборка из нормального распределения.
-Необходимо найти интервальные оценки дисперсии и математического ожидания.
-\end{block}
-\begin{alertblock}{код на R. Среднее}
-\begin{verbatim}
-n<-length(x)
-alpha<-0.05
-error <- qt((1-alpha / 2.0), df=(n-1)) * sd(x) / sqrt(n)
-l <- mean(x) - error
-r <- mean(x) + error
-\end{verbatim}
-\end{alertblock}
+\begin{frame}
+\frametitle{Точный тест Фишера: приближенные вычисления}
+\begin{tabular}{l|l|l|l}
+&  не взошел & взошел & $\sum$ \\ \hline
+обработано & $a$ & $b$ & $a+b$ \\\hline
+не обработано & $c$ & $d$ & $c+d$ \\\hline
+$\sum$ & $a+c$ & $b+d$ & $a+b+c+d$
+\end{tabular}
+Гипотеза: наблюдаемое распределение $a,b,c,d$ результат случая
+
+\begin{exampleblock}{Аппроксимация распределением $\chi^2$ (c поправкой Ейтса)}
+$$
+\begin{array}{l}
+\chi^2_{\mbox{выч.}} = \dfrac{n\left(|ad-bc|-\frac{n}{2}\right)^2}{(a+b)(a+c)(b+d)(c+d)} \\
+n = a+b+c+d
+\end{array}
+$$
+условия применимости: $a,b,c,d\geq 5, n\geq 40$
+\end{exampleblock}
+Гипотеза отвергается на уровне значимости $\alpha$, если  $\chi_{\mbox{выч.}}^2>\chi^2_{1-\alpha}(1)$ (в частности, $\chi^2_{0.95}(1)\approx
+3.85$, 1 -- число степеней свободы для таблицы $2\times 2$)
 \end{frame}
 % -----------------------------------------
 
+
 % --------------- слайд 9 -----------------
-\begin{frame}[fragile=singleslide]
-\frametitle{Вычисление доверительных интервалов на R}
-\begin{alertblock}{Доверительный интервал для среднего}
-\begin{verbatim}
-> l
-[1] -0.5789119
-> r
-[1] 0.3117748
-> mean(x) # point estimation of the m-expectation
-[1] -0.1335686
-\end{verbatim}
-\end{alertblock}
+\begin{frame}
+\frametitle{Задачи классификации}
+\begin{itemize}
+	\item<1-> Классификация в отсутствии обучающей выборки (кластеризация);
+	\item<2-> Классификация при наличии обучающей выборки (по прецедентам); 
+ \end{itemize}
 \end{frame}
 % -----------------------------------------
 
 
 % --------------- слайд 10 ----------------
-\begin{frame}[fragile=singleslide]
-\frametitle{Вычисление доверительных интервалов на R}
-\begin{exampleblock}{Код на R. Дисперсия}
-\begin{verbatim}
-df <- length(x)-1
-alpha <- 0.05
-l <-  df * var(x)/qchisq(1-alpha/2.0)
-r <-  df * var(x)/qchisq(alpha/2.0)
-\end{verbatim}
-\end{exampleblock}
-\begin{verbatim}
-> r
-[1] 1.9316
-> l
-[1] 0.5236715
-> var(x) # point estimation of the variance
-[1] 0.9054645
-\end{verbatim}
+\begin{frame}
+	\frametitle{Кластеризация}
+\begin{itemize}
+	\item<1-> Иерархический (агломеративная, дивизивные);	
+\item<2-> Логическая кластеризация
+\item<3-> Вероятностные
+\item<4-> Нейросетевые
+\end{itemize}
 \end{frame}
 % -----------------------------------------
+
 
 % --------------- слайд 11 ----------------
 \begin{frame}
-\frametitle{Оценка всхожести семян}
-\begin{block}{Формулировка задачи}
-Имеется образцы семян в количестве $n$-штук. Необходимо оценить вероятность всхожести семян.
-\end{block}
-\only<2->{\begin{exampleblock}{Формулировка в терминах ТВ}
-Пусть  $p$ --вероятность того, что семя взойдет; $1-p$ -- вероятность того, что оно не взойдет.
-В результате $n$-испытаний (проращивания семян), имеется серия   экспериментов по схеме Бернулли с неизвестной вероятностью
-<<успеха>> $p$. Эту вероятность и требуется найти.
+\frametitle{Иерархическая агломеративная кластеризация}
+\begin{exampleblock}{Общая структура алгоритмов}
+	\begin{itemize}
+		\item задание расстояние между кластеризуемыми объектами;
+		\item задание расстояние между группами объектов;
+	\end{itemize}
 \end{exampleblock}
-}
+
+
 \end{frame}
 % -----------------------------------------
+
 
 % --------------- слайд 12 ----------------
 \begin{frame}
-\frametitle{Оценка всхожести семян}
-\begin{exampleblock}{Решение}
+\frametitle{Расстояние между объектами}
+Полагается, что объекты $x,y$ имеют координаты $x_1,\ldots,x_n$ и $y_1,\ldots,y_n$.
 \begin{itemize}
-\item<1-> Обозначим $k$  -- количество проросших семян;
-\item<2-> Можно получить оценку возможных значений $k$, решив: $\sum\limits_{i=k-s}^{i=k+s}\mathcal{C}^i_np^i(1-p)^{n-k}=1-\alpha$,
-где $\alpha$ (уровень значимости) задается, а $s$ -- находится из уравнения, но
-	\begin{itemize}
-		\item<3-> такое уравнение не всегда просто решить
+	\item<1-> Евклидово расстояние: $\rho(x, y) =\sum\limits_j(x_j-y_j)^2$;
+	\item<2-> Расстояние Чебышева: $\rho(x, y) = \max_j|x_j-y_j|$;
+	\item<3-> Расстояние city-block: $\rho(x, y) = \sum\limits_i|x_i-y_i|$;
+	\item<4-> Расстояние Минковского: $\rho(x,y)^p=\sum\limits_i(x_i-y_i)^p$;
 	\end{itemize}
-\item<4-> Выход?
-\end{itemize}
-\end{exampleblock}
-\only<5->{
-\begin{itemize}
-\item<6-> Использование предельных теорем
-\item<7-> Теорема Муавра-Лапласа (интегральная)
-Если $p$ вероятность успеха в серии $n$ испытаний по схеме Бернулли ($k$ -- число успехов в $n$ испытаниях), то
-$$
-P\left(\dfrac{k-np}{\sqrt{np(1-p)}}<
-x\right)\xrightarrow[{\mbox{{\small при }}\,\displaystyle
-n\rightarrow\infty}]{}\dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt.
-$$
-\end{itemize}}
 \end{frame}
-
 % -----------------------------------------
-
-
 
 
 % --------------- слайд 13 ----------------
 \begin{frame}
-\frametitle{Оценка всхожести семян}
-\begin{exampleblock}{Решение}
-$$
-\begin{array}{l}
-\Phi_0 = \dfrac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^x\textrm{e}^{-t^2/2}dt\\
-\only<2->{P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) = P\left(-\varepsilon<\dfrac{k-np}{n}<\varepsilon\right) =} \\
-\only<3->{= P\left(-\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}<\dfrac{k-np}{\sqrt{npq}}<\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right) =} \\
-\only<4->{\Phi_0\left(\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right) - \Phi_0\left(\dfrac{-\varepsilon\sqrt n}{\sqrt{pq}}\right) =
-2\cdot \Phi_0\left(\dfrac{\varepsilon\sqrt n}{\sqrt{pq}}\right)-1}\\
-\only<5->{P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) \geq 2\Phi_0(2\varepsilon\sqrt n)-1}\only<7->{\color{red}{= 1-\alpha, (\alpha = 0.05)}}
-\end{array}
-$$
-\end{exampleblock}
-\only<6->{Что дальше?}
-\only<8->{Значения для $\Phi_0^{-1}$ могут вычислять любые современные программные пакеты статистического анализа, либо его
-можно определить по таблицам.}
+\frametitle{Подходы для вычисления расстояний между группами объектов}
+\begin{itemize}
+	\item<1-> метод минимального расстояния (single method);
+	\item<2-> метод максимального расстояния (complete method);
+	\item<3-> попарное среднее;
+	\item<4-> центроидный метод;	
+\end{itemize}
 \end{frame}
 % -----------------------------------------
 
 
 % --------------- слайд 14 ----------------
-\begin{frame}[fragile=singleslide]
-\frametitle{Оценка всхожести семян}
-\begin{exampleblock}{Вычисления на R}
-\begin{verbatim}
-> n<-100
-> k<-40
-> alpha <- 0.05
-> error <- 0.5*qnorm(1-alpha/2)/sqrt(n)
-> left  <- k/n - error
-> right <- k/n + error
-> left
-[1] 0.3020018
-> right
-[1] 0.4979982
-\end{verbatim}
-\end{exampleblock}
+\begin{frame}
+\frametitle{Представление иерархической кластеризации в виде дендрограммы}
+\includegraphics[width=11cm]{dendrogram.jpg}
 \end{frame}
 % -----------------------------------------
 
-
 % --------------- слайд 15 ----------------
-
-\begin{frame}[fragile=singleslide]
-\frametitle{Оценка всхожести семян}
-\begin{exampleblock}{Вычисления на Python}
-\begin{verbatim}
-Python:
->>> from scipy.stats import norm
->>> import numpy as np
->>> n = 100.0
->>> k = 40.0
->>> alpha = 0.05
->>> error = 0.5*norm().ppf(1-alpha/2.0)/np.sqrt(n)
->>> left = k / n  - error
->>> right = k / n  + error
->>> left
-0.30200180077299732
->>> right
-0.49799819922700272
-\end{verbatim}
-\end{exampleblock}
+\begin{frame}
+\frametitle{Метод k-средних}
+\begin{itemize}
+	\item задается число кластеров $k$;
+	\item в факторном пространстве случайным образом выбираются начальные приближения центров кластеров;
+	\item ближайшие к j-му центру точки помещаются в j-й кластер;
+	\item пересчитываются центроиды кластеров;
+\end{itemize}
+Последние 2 шага повторяются пока алгоритм не сойдется.
 \end{frame}
 % -----------------------------------------
 
 % --------------- слайд 16 ----------------
-
-\begin{frame}[fragile]
-\frametitle{Оценка необходимого числа экспериментов/размера выборки}
-\begin{block}{Задача}
-Сколько нужно взять семян, чтобы оценить их всхожесть с точностью $\varepsilon=0.01$ и доверительной
-вероятностью $p_v = 0.99$.
-\end{block}
-
-\only<2-4>{
-\begin{exampleblock}{Решение}
-$$
-\begin{array}{l}
-P\left(\left| \dfrac{k}{n}-p\right|<\varepsilon\right) \geq 2\Phi_0(2\varepsilon\sqrt n)-1 \\
-\only<3-4>{
-2\Phi_0(2\cdot \varepsilon\sqrt n)-1 = p_v \\}
-\only<4>{n =\dfrac{1}{4\varepsilon^2}\left(\Phi_0^{-1}\left(\dfrac{1+p_v}{2}\right)\right)^2 }
-\end{array}
-$$
+\begin{frame}
+\frametitle{Сравнение кластерных структур}
+\begin{exampleblock}{Задача}
+	Можно ли построить какую-либо меру, чтобы сравнить, например, кластерные структуры?:
+	$$
+	\begin{array}{l}
+	a,a,a,b,b,c,c,c,c\\
+	1,1,1,3,3,2,2,2,2
+	\end{array}
+	$$
+	или
+	$$
+	\begin{array}{l}
+		a,a,a,b,b,c,c,c,c\\
+		2,2,2,1,1,3,3,3,1
+	\end{array}
+	$$
 \end{exampleblock}
-}
 \end{frame}
 % -----------------------------------------
-
 
 % --------------- слайд 17 ----------------
-\begin{frame}[fragile]
-\frametitle{Оценка необходимого числа экспериментов/размера выборки}
-$$n =\dfrac{1}{4\varepsilon^2}\left(\Phi_0^{-1}\left(\dfrac{1+p_v}{2}\right)\right)^2$$
-\begin{exampleblock}{Реализация на R:}
-\begin{verbatim}
-epsilon <- 0.01
-pv <- 0.99
-n = 1/4/epsilon^2*qnorm((1+pv)/2)^2
-n
-[1] 16587.24
-\end{verbatim}
-\end{exampleblock}
+\begin{frame}
+\frametitle{Индекс Рэнда}
+Пусть $X=(x_1,\ldots,x_n)$ -- n-элементное множество; $P=(A_1,\ldots, A_r)$ и $Q=(B_1,\ldots,B_s)$ -- два его разбиения.
+Определим 
+\begin{itemize}
+	\item $a$ -- число пар элементов попавших в один кластер в разбиениях $P$ и $Q$ одновременно;
+	\item $b$ -- число пар элементов, находящихся в разных кластерах в разбиениях $P$ и $Q$;
+	\item $c$ -- число пар элементов, находящихся в одном кластере в $P$ разбиении, но в разных в $Q$;
+	\item $d$ -- число пар элементов, находящихся в разных кластерах в $P$ разбиении, но в одном в $Q$;
+\end{itemize}
+В этом случае $a+b$ -- характеризует степень совпадения кластеров, если $c=d=0$, то кластерные структуры совпадают.
+Индекс Рэнда:
+$$
+I_R = \dfrac{a+b}{a+b+c+d} = \dfrac{a+b}{C_n^2}
+$$
 \end{frame}
 % -----------------------------------------
 
-
-% --------------- слайд 18 ----------------
-\begin{frame}
-\frametitle{Задача Бюффона (1707--1788)}
-\begin{block}{}
-На плоскости расчерчивают параллельные
-линии. Показать, что если расстояние между линиями вдвое больше
-иглы, подбрасываемой над плоскостью, то отношение общего числа
-бросаний иглы к числу пресечений ею одной из линий стремится при  увеличении количества экспериментов к
-$\pi=3.14159\ldots$.
-\end{block}
-\begin{columns}[T]
-\begin{column}{5cm}
-\begin{tikzpicture}
-\draw [help lines,color=cyan!70] (-0.9,-1.0) grid (2.9, 4);
-\draw [->] (-1,0)--(3,0) node[anchor=north]{$\varphi$};
-\draw [->] (0,-2)--(0,3) node[anchor=east]{$c$};
-\draw[color=green,fill=green!20, opacity=0.3] (0,0)--(2,0)--(2,4)--(0,4)--cycle;
-\draw[color=red,fill=red!40, opacity=0.6] plot [domain=0:2] (\x,{2*sin(\x*90)});
-\draw (2,0) node[anchor=north]{$\pi$};
-\draw (0,2) node[anchor=east]{$l$};
-\draw (0,4) node[anchor=east]{$2l$};
-\end{tikzpicture}
-\end{column}
-\begin{column}{5cm}
-Решение:
-$\{c,\varphi\}=[0,2l]\times[0,\pi]$, откуда
-$P(\mbox{<<пер-ние>>})=\dfrac{S_{\sin}({\color{red!40}\bullet})}{S_{2l\times\pi}}$;
-$P(\mbox{<<пер-ние>>})=\dfrac{1}{\pi}$.
-{\scriptsize
-\begin{alertblock}<2>{Вопрос}
-Сколько раз необходимо осуществлять эксперимент, чтобы достичь
-заданной точности?
-\end{alertblock}
-}
-\end{column}
-\end{columns}
-\end{frame}
-% -----------------------------------------
-
-
-% --------------- слайд 19 ----------------
-\begin{frame}
-\frametitle{Продолжение решения задачи Бюффона}
-\begin{alertblock}{}
-Сколько необходимо испытаний? (грубая оценка по неравенству Чебышева)
-\end{alertblock}
-\begin{columns}
-\begin{column}{5cm}
-\begin{exampleblock}{$pq=\dfrac{\pi-1}{\pi^2}$}
-$$
-\begin{array}{l}
-P(\left|\dfrac{\nu_n}{n}-p\right|<\alpha)>1-\varepsilon,\\
-\alpha=0.001,\qquad \varepsilon=0.001,\\
-\Downarrow\\
-{\color{red}\mathbf{n>232013}}
-\end{array}
-$$
-\end{exampleblock}
-\end{column}
-\begin{column}{0.2cm}
-\end{column}
-\begin{column}{5cm}
-\begin{exampleblock}{$pq\leq1/4$}
-$$
-\begin{array}{l}
-P(\left|\dfrac{\nu_n}{n}-p\right|<\alpha)>1-\varepsilon,\\
-\alpha=0.001,\qquad \varepsilon=0.001,\\
-\Downarrow\\
-{\color{red}\mathbf{n>267311}}
-\end{array}
-$$
-\end{exampleblock}
-\end{column}
-\end{columns}
-\only<1>{
-\begin{alertblock}{Вывод}
-Априорное знание оцениваемых вероятностей позволяет сэкономить
-число необходимых экспериментов для достижения установленной точности
-\end{alertblock}
-}
-\only<2->{
-\begin{alertblock}{Упражнение}
-Получить оценку необходимого числа экспериментов используя предельные теоремы
-\end{alertblock}
-}
-\end{frame}
 
