@@ -1,4 +1,3 @@
-
 Информационные ресурсы
 ======================
 ======================
@@ -11,8 +10,9 @@
 R -- аспекты программирования и структуры языка
 -----------------------------------------------
 
-* `Спецификация языка R<https://cran.r-project.org/doc/manuals/R-lang.pdf>`_
-* `Написание собственных пакетов <>`_
+* `Спецификация языка R <https://cran.r-project.org/doc/manuals/R-lang.pdf>`_
+* `Общая информация о пакетах в среде R <https://www.datacamp.com/community/tutorials/r-packages-guide>`_ 
+* `Написание собственных пакетов <https://cran.r-project.org/doc/manuals/r-release/R-exts.html>`_
 
 
 Books/User guidies
@@ -23,6 +23,7 @@ Books/User guidies
 * `Метод главных компонент http://www.inp.nsk.su/~baldin/DataAnalysis/R/R-06-gui.pdf`_
 * C. Гланц Медико-биологическая статистика. М. 1999. 459 с.
 * Кобзарь А.И. Прикладная математическая статистика для инженеров и научных работников. М.: Физматлит, 2006. 816 с.
+
 
 
 
