@@ -28,5 +28,5 @@ Books/User guidies
 * `Метод главных компонент http://www.inp.nsk.su/~baldin/DataAnalysis/R/R-06-gui.pdf`_
 * Гланц C. Медико-биологическая статистика. М. 1999. 459 с.
 * Кобзарь А.И. Прикладная математическая статистика для инженеров и научных работников. М.: Физматлит, 2006. 816 с.
-
+* `Applied multivariate statistics <http://www.leg.ufpr.br/lib/exe/fetch.php/wiki:internas:biblioteca:applied_multivariate_statistics.pdf>`_
 
